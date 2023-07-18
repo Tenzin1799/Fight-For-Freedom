@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class gameModel {
+    // EMPTY HP AND STAMINA
+    private final int NO_STAMINA = 0;
+    private final int NO_HP = 0;
+    private final int MELEE_CHOICE = 0;
+    private final int RANGED_CHOICE = 1;
     // HEALTH POTS
     private HealthPot hpSmall = new HealthPot("Elixir of Life", 20, 0);
     private HealthPot hpMedium = new HealthPot("Elixir of Life", 45, 0);
@@ -34,11 +39,12 @@ public class gameModel {
     private Weapon slingShot = new Ranged("Sling Shot", 15, 15,
             25, 15);
     private Weapon pistol = new Ranged("Blaster Pistol", 35,  80,
-            40, 15);
+            50, 15);
     private Weapon shotGun = new Ranged("Sawed-Off Shot Gun", 80, 200,
-            70, 25);
+            80, 25);
     private Weapon energyRifle = new Ranged("Energy Rifle", 150, 800,
             90, 40);
+    private int missedRange = 100;
     // IDK YET
     private List<Item> playerInventory = new ArrayList<>();
     private List<Weapon> playerWeapons = new ArrayList<>(2);
@@ -50,10 +56,20 @@ public class gameModel {
     private int basicStaminaRegen = 25;
     private Fighter testNPC = new Player("Chump", 50, 200,
             100, testNPCInventory, testNPCWeapons);
-    private int enemyMaxWeaponsIndex = 1;
+    private int enemyInitialChoice = 1;    // CHANGE TO 2 LATER TO USE ITEMS FOR ENEMY
+    private int enemyChoice;
+
 
 
     public void gameModel(){}
+
+    public int getNoStamina() {
+        return NO_STAMINA;
+    }
+
+    public int getNoHP() {
+        return NO_HP;
+    }
 
     public Fighter getPlayer(){
         return p1;
@@ -147,7 +163,27 @@ public class gameModel {
         return basicStaminaRegen;
     }
 
-    public int getEnemyMaxWeaponsIndex() {
-        return enemyMaxWeaponsIndex;
+    public int getEnemyInitialChoice() {
+        return enemyInitialChoice;
+    }
+
+    public int getEnemyChoice() {
+        return enemyChoice;
+    }
+
+    public void setEnemyChoice(int enemyChoice) {
+        this.enemyChoice = enemyChoice;
+    }
+
+    public int getMELEE_CHOICE() {
+        return MELEE_CHOICE;
+    }
+
+    public int getRANGED_CHOICE() {
+        return RANGED_CHOICE;
+    }
+
+    public int getMissedRange() {
+        return missedRange;
     }
 }

@@ -53,9 +53,9 @@ public class gameView {
         System.out.print("you: ");
     }
 
-    public void userAttackOptions(){
-        System.out.println("1. Melee");
-        System.out.println("2. Ranged");
+    public void userAttackOptions(String melee, String ranged){
+        System.out.println("1. Melee - " + melee);
+        System.out.println("2. Ranged - " + ranged);
         System.out.println("3. Back");
 
     }
@@ -70,6 +70,18 @@ public class gameView {
 
     public void counterHit(){
         System.out.println("Enemy counter attacks and lands!");
+    }
+
+    public void rangedAttack(String rangedWeapon){
+        System.out.println("You attacked with " + rangedWeapon + "!!");
+    }
+
+    public void missedRangedAttack(){
+        System.out.println("You missed!!");
+    }
+
+    public void enemyMissedRangedAttack(){
+        System.out.println("Enemy missed!!");
     }
 
     public void enterNext(){

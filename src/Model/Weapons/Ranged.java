@@ -5,7 +5,7 @@ public class Ranged extends Weapon{
         super(name, dmg, price, hitChance, staminaUsage);
     }
 
-    // random number between 1-100;
+    // random number between 0-100;
         // if number is equal or less than hitChance,
             //hit
         // else

@@ -80,6 +80,10 @@ public class gameView {
         System.out.println("You missed!!");
     }
 
+    public void enemyRangedAttack(String rangedWeapon){
+        System.out.println("Enemy attacked with " + rangedWeapon +"!!");
+    }
+
     public void enemyMissedRangedAttack(){
         System.out.println("Enemy missed!!");
     }

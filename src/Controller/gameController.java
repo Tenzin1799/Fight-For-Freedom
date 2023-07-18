@@ -21,96 +21,110 @@ public class gameController {
         npc.getWeapons().add(model.getWoodSword());
         npc.getWeapons().add(model.getPistol());
         view.beginCombatDialogue(p1.getName(), npc.getName());
-
         // while player is alive && npc is alive, add loop later
         while(p1.getHP() > model.getNoHP() &&
                 npc.getHP() > model.getNoHP()) {
             view.displayStats(p1.getName(), p1.getHP(), p1.getStamina(),
                     npc.getName(), npc.getHP(), npc.getStamina());
-            boolean optionChosen = false;   // this boolean allows players to use "back" option
             // PLAYER ATTACK TURN
-            while (!optionChosen) {
-                if (p1.getStamina() > model.getNoStamina()) {
-                    view.displayCombatOptions();
-                    switch (getUserInputFourOptions()) {
-                        case "1":
-                            view.userAttackOptions(p1.getWeapons().get(model.getMELEE_CHOICE()).toString(),
-                                    p1.getWeapons().get(model.getRANGED_CHOICE()).toString());
-                            switch (getUserInputThreeOptions()) {
-                                case "1":
-                                    // MELEE ATTACK
-                                    view.meleeAttack(p1.getWeapons().get(model.getMELEE_CHOICE()).toString());
-                                    npc.setHP(npc.getHP() - model.getPlayer().getWeapons().get(model.getMELEE_CHOICE()).getDamage());
-                                    if (npc.getHP()>model.getNoHP()){
-                                        meleeHitChance();
-                                    }
-                                    p1.setStamina(p1.getStamina() -
-                                            p1.getWeapons().get(model.getMELEE_CHOICE()).getStaminaUsage());
-                                    view.enterNext();
-                                    kb.nextLine();
-                                    optionChosen = true;
-                                    break;
-                                case "2":
-                                    // RANGED ATTACK
-                                    if (rangedMissChance()){
-                                        view.rangedAttack(p1.getWeapons().get(model.getRANGED_CHOICE()).toString());
-                                        npc.setHP(npc.getHP() - model.getPlayer().getWeapons().get(model.getRANGED_CHOICE()).getDamage());
-                                    } else {
-                                        view.missedRangedAttack();
-                                    }
-                                    view.enterNext();
-                                    kb.nextLine();
-                                    optionChosen = true;
-                                    break;
-                                case "3":
-                                    // RETURN TO OPTIONS
-                                    System.out.println("Back");
-                            }
-                            break;
-                        case "2":
-                            //  USE ITEMS
-                            break;
-                        case "3":
-                            // TAUNT
-                            break;
-                        case "4":
-                            // SURRENDER
-                            // maybe you can surrender 2 fights maximum, before you die
-                    }
-                } else {
-                    view.playerNoStamina();
-                    view.enterNext();
-                    kb.nextLine();
-                    p1.setStamina(model.getBasicStaminaRegen());
-                    optionChosen = true;
-                }
-            }
+            playerAttack(p1, npc);
             // ENEMY ATTACK TURN
-            if (npc.getHP()>model.getNoHP()){
-                model.setEnemyChoice(randomNumberGenerator(model.getEnemyInitialChoice()));
-                switch(model.getEnemyChoice()){
-                    case 0:
-                        // MELEE WILL FOLLOW THRU
-                    case 1:
-                        // RANGED
-                        if (rangedMissChance()){
-                            view.rangedAttack(npc.getWeapons().get(model.getRANGED_CHOICE()).toString());
-                            p1.setHP(p1.getHP()-npc.getWeapons().get(model.getRANGED_CHOICE()).getDamage());
-                        } else {
-                            view.enemyMissedRangedAttack();
+            enemyAttack(p1, npc);
+        }
+    }
+
+    public void playerAttack(Fighter p1, Fighter npc){
+        boolean optionChosen = false;   // this boolean allows players to use "back" option
+        while (!optionChosen) {
+            if (p1.getStamina() > model.getNoStamina()) {
+                view.displayCombatOptions();
+                switch (getUserInputFourOptions()) {
+                    case "1":
+                        view.userAttackOptions(p1.getWeapons().get(model.getMELEE_CHOICE()).toString(),
+                                p1.getWeapons().get(model.getRANGED_CHOICE()).toString());
+                        switch (getUserInputThreeOptions()) {
+                            case "1":
+                                // MELEE ATTACK
+                                view.meleeAttack(p1.getWeapons().get(model.getMELEE_CHOICE()).toString());
+                                npc.setHP(npc.getHP() - model.getPlayer().getWeapons().get(model.getMELEE_CHOICE()).getDamage());
+                                if (npc.getHP()>model.getNoHP()){
+                                    meleeHitChance();
+                                }
+                                p1.setStamina(p1.getStamina() -
+                                        p1.getWeapons().get(model.getMELEE_CHOICE()).getStaminaUsage());
+                                view.enterNext();
+                                kb.nextLine();
+                                System.out.println();
+                                optionChosen = true;
+                                break;
+                            case "2":
+                                // RANGED ATTACK
+                                if (rangedMissChance()){
+                                    view.rangedAttack(p1.getWeapons().get(model.getRANGED_CHOICE()).toString());
+                                    npc.setHP(npc.getHP() - model.getPlayer().getWeapons().get(model.getRANGED_CHOICE()).getDamage());
+                                } else {
+                                    view.missedRangedAttack();
+                                }
+                                view.enterNext();
+                                kb.nextLine();
+                                System.out.println();
+                                optionChosen = true;
+                                break;
+                            case "3":
+                                // RETURN TO OPTIONS
+                                System.out.println("Back");
                         }
                         break;
-                    case 2:
-                        // USE ITEMS
-                        System.out.println("item Used");
+                    case "2":
+                        //  USE ITEMS
                         break;
+                    case "3":
+                        // TAUNT
+                        break;
+                    case "4":
+                        // SURRENDER
+                        // maybe you can surrender 2 fights maximum, before you die
                 }
+            } else {
+                view.playerNoStamina();
                 view.enterNext();
                 kb.nextLine();
-                view.bigDivider();
-            } else {
-                view.enemyDied(npc.getName());
+                System.out.println();
+                p1.setStamina(model.getBasicStaminaRegen());
+                optionChosen = true;
             }
+        }
+    }
+
+    public void enemyAttack(Fighter p1, Fighter npc){
+        if (npc.getHP()>model.getNoHP()){
+            model.setEnemyChoice(randomNumberGenerator(model.getEnemyInitialChoice()));
+            switch(model.getEnemyChoice()){
+                case 0:
+                    // MELEE WILL FOLLOW THRU
+                    view.enemyAttacks(npc.getWeapons().get(model.getMELEE_CHOICE()).toString());
+                    p1.setHP(p1.getHP()-npc.getWeapons().get(model.getMELEE_CHOICE()).getDamage());
+                    break;
+                case 1:
+                    // RANGED
+                    if (rangedMissChance()){
+                        view.enemyRangedAttack(npc.getWeapons().get(model.getRANGED_CHOICE()).toString());
+                        p1.setHP(p1.getHP()-npc.getWeapons().get(model.getRANGED_CHOICE()).getDamage());
+                    } else {
+                        view.enemyMissedRangedAttack();
+                    }
+                    break;
+                case 2:
+                    // USE ITEMS
+                    System.out.println("item Used");
+                    break;
+            }
+            view.enterNext();
+            kb.nextLine();
+            System.out.println();
+            view.bigDivider();
+        } else {
+            view.enemyDied(npc.getName());
         }
     }
 

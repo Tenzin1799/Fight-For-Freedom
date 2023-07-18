@@ -17,10 +17,12 @@ public class gameModel {
     private final int NO_HP = 0;
     private final int MELEE_CHOICE = 0;
     private final int RANGED_CHOICE = 1;
+    private final int HEALTH_POT_CHOICE = 0;
+    private final int STAMINA_POT_CHOICE = 1;
     // HEALTH POTS
-    private HealthPot hpSmall = new HealthPot("Elixir of Life", 20, 0);
+    private HealthPot hpSmall = new HealthPot("Elixir of Nurture", 20, 0);
     private HealthPot hpMedium = new HealthPot("Elixir of Life", 45, 0);
-    private HealthPot hpBig = new HealthPot("Elixir of Life", 75, 0);
+    private HealthPot hpBig = new HealthPot("Elixir of The Gods", 75, 0);
     // MELEE WEAPONS
     private Weapon unarmed = new Melee("Fists", 10, 0,
             1, 10);
@@ -46,10 +48,13 @@ public class gameModel {
             90, 40);
     private int missedRange = 100;
     // IDK YET
-    private List<Item> playerInventory = new ArrayList<>();
+    private List<List<Item>> playerInventory = new ArrayList<>();
+    private List<Item> playerHealthPotions = new ArrayList<>();
+    private List<Item> playerStaminaPotions = new ArrayList<>();
     private List<Weapon> playerWeapons = new ArrayList<>(2);
-    private List<Item> testNPCInventory = new ArrayList<>();
+    private List<List<Item>> testNPCInventory = new ArrayList<>();
     private List<Weapon> testNPCWeapons = new ArrayList<>();
+    private List<Item> testNPCPotions = new ArrayList<>();
     // CHARACTERS
     private Fighter p1 = new Player("Tenzin", 100, 150,
             30, playerInventory, playerWeapons);
@@ -131,15 +136,12 @@ public class gameModel {
         return energyRifle;
     }
 
-    public List<Item> getPlayerInventory() {
-        return playerInventory;
-    }
 
     public List<Weapon> getPlayerWeapons() {
         return playerWeapons;
     }
 
-    public List<Item> getTestNPCInventory() {
+    public List<List<Item>> getTestNPCInventory() {
         return testNPCInventory;
     }
 
@@ -185,5 +187,26 @@ public class gameModel {
 
     public int getMissedRange() {
         return missedRange;
+    }
+
+    public int getHEALTH_POT_CHOICE() {
+        return HEALTH_POT_CHOICE;
+    }
+
+    public int getSTAMINA_POT_CHOICE() {
+        return STAMINA_POT_CHOICE;
+    }
+
+
+    public List<Item> getTestNPCPotions() {
+        return testNPCPotions;
+    }
+
+    public List<Item> getPlayerStaminaPotions() {
+        return playerStaminaPotions;
+    }
+
+    public List<Item> getPlayerHealthPotions() {
+        return playerHealthPotions;
     }
 }

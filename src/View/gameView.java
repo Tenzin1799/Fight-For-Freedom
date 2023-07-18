@@ -112,4 +112,8 @@ public class gameView {
             System.out.println();
         }
     }
+
+    public void displayHealthPotOptions(String potions){
+        System.out.println(potions);
+    }
 }

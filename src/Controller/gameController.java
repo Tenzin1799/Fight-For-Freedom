@@ -14,6 +14,14 @@ public class gameController {
     public void startGame(){
         model.getPlayer().getWeapons().add(model.getUnarmed());
         model.getPlayer().getWeapons().add(model.getRocks());
+        model.getPlayer().getInventory().add(model.getPlayerHealthPotions());
+        model.getPlayer().getInventory().get(0).add(model.getHpBig());
+        model.getPlayer().getInventory().add(model.getPlayerStaminaPotions());
+        model.getPlayer().getInventory().get(0).add(model.getHpSmall());
+        model.getPlayer().getInventory().get(0).add(model.getHpBig());
+
+
+
         combat(model.getPlayer(), model.getNPC());
     }
 
@@ -40,6 +48,7 @@ public class gameController {
                 view.displayCombatOptions();
                 switch (getUserInputFourOptions()) {
                     case "1":
+                        // ATTACK
                         userAttackOptions(p1, npc);
                         switch (getUserInputThreeOptions()) {
                             case "1":
@@ -59,6 +68,20 @@ public class gameController {
                         break;
                     case "2":
                         //  USE ITEMS
+                        System.out.println("Display pot options method here");
+                        userPotionOptions(p1, npc);
+                        switch (getUserInputThreeOptions()){
+                            case "1":
+                                // HEALTH POT
+                                playerUseHealthPot(p1, model.getHEALTH_POT_CHOICE());
+                                break;
+                            case "2":
+                                // STAMINA POT
+//                                playerUseStaminaPot(p1, model.getSTAMINA_POT_CHOICE());
+                                break;
+                            case "3":
+                                // BACK
+                        }
                         break;
                     case "3":
                         // TAUNT
@@ -133,6 +156,14 @@ public class gameController {
         view.enterNext();
         kb.nextLine();
         System.out.println();
+    }
+
+    public void userPotionOptions(Fighter p1, Fighter npc){
+        view.displayHealthPotOptions(p1.getInventory().toString());
+    }
+
+    public void playerUseHealthPot(Fighter p1, int typeOfPotion){
+
     }
 
     public void userAttackOptions(Fighter p1, Fighter npc){

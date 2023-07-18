@@ -1,6 +1,5 @@
 package Model.Characters;
 
-import Model.Characters.Fighter;
 import Model.Items.Item;
 import Model.Weapons.Weapon;
 

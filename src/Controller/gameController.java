@@ -40,34 +40,16 @@ public class gameController {
                 view.displayCombatOptions();
                 switch (getUserInputFourOptions()) {
                     case "1":
-                        view.userAttackOptions(p1.getWeapons().get(model.getMELEE_CHOICE()).toString(),
-                                p1.getWeapons().get(model.getRANGED_CHOICE()).toString());
+                        userAttackOptions(p1, npc);
                         switch (getUserInputThreeOptions()) {
                             case "1":
                                 // MELEE ATTACK
-                                view.meleeAttack(p1.getWeapons().get(model.getMELEE_CHOICE()).toString());
-                                npc.setHP(npc.getHP() - model.getPlayer().getWeapons().get(model.getMELEE_CHOICE()).getDamage());
-                                if (npc.getHP()>model.getNoHP()){
-                                    meleeHitChance();
-                                }
-                                p1.setStamina(p1.getStamina() -
-                                        p1.getWeapons().get(model.getMELEE_CHOICE()).getStaminaUsage());
-                                view.enterNext();
-                                kb.nextLine();
-                                System.out.println();
+                                playerMeleeAttack(p1, npc);
                                 optionChosen = true;
                                 break;
                             case "2":
                                 // RANGED ATTACK
-                                if (rangedMissChance()){
-                                    view.rangedAttack(p1.getWeapons().get(model.getRANGED_CHOICE()).toString());
-                                    npc.setHP(npc.getHP() - model.getPlayer().getWeapons().get(model.getRANGED_CHOICE()).getDamage());
-                                } else {
-                                    view.missedRangedAttack();
-                                }
-                                view.enterNext();
-                                kb.nextLine();
-                                System.out.println();
+                                playerRangedAttack(p1, npc);
                                 optionChosen = true;
                                 break;
                             case "3":
@@ -126,6 +108,36 @@ public class gameController {
         } else {
             view.enemyDied(npc.getName());
         }
+    }
+
+    public void playerMeleeAttack(Fighter p1, Fighter npc){
+        view.meleeAttack(p1.getWeapons().get(model.getMELEE_CHOICE()).toString());
+        npc.setHP(npc.getHP() - model.getPlayer().getWeapons().get(model.getMELEE_CHOICE()).getDamage());
+        if (npc.getHP()>model.getNoHP()){
+            meleeHitChance();
+        }
+        p1.setStamina(p1.getStamina() -
+                p1.getWeapons().get(model.getMELEE_CHOICE()).getStaminaUsage());
+        view.enterNext();
+        kb.nextLine();
+        System.out.println();
+    }
+
+    public void playerRangedAttack(Fighter p1, Fighter npc){
+        if (rangedMissChance()){
+            view.rangedAttack(p1.getWeapons().get(model.getRANGED_CHOICE()).toString());
+            npc.setHP(npc.getHP() - model.getPlayer().getWeapons().get(model.getRANGED_CHOICE()).getDamage());
+        } else {
+            view.missedRangedAttack();
+        }
+        view.enterNext();
+        kb.nextLine();
+        System.out.println();
+    }
+
+    public void userAttackOptions(Fighter p1, Fighter npc){
+        view.userAttackOptions(p1.getWeapons().get(model.getMELEE_CHOICE()).toString(),
+                p1.getWeapons().get(model.getRANGED_CHOICE()).toString());
     }
 
     public String getUserInputFourOptions(){

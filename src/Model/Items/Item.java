@@ -1,7 +1,7 @@
 package Model.Items;
 
 public class Item {
-    int amount;
+    int amount = 0;
     String name;
     int booster;    //booster is the amt of hp/stamina restored
 
@@ -27,9 +27,22 @@ public class Item {
         this.booster = booster;
     }
 
+    public void addAmount(){
+        amount++;
+    }
+
+    public void minusAmount(){
+        amount--;
+    }
+
+    public int getAmount(){
+        return amount;
+    }
+
     @Override
     public String toString() {
-        return name;
+        return name + " - " + amount + " (restores " + booster +")";
     }
+
 
 }

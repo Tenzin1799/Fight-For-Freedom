@@ -12,13 +12,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class gameModel {
-    // EMPTY HP AND STAMINA
+    // EMPTY HP AND STAMINA CHOOSER
     private final int NO_STAMINA = 0;
     private final int NO_HP = 0;
     private final int MELEE_CHOICE = 0;
     private final int RANGED_CHOICE = 1;
     private final int HEALTH_POT_CHOICE = 0;
     private final int STAMINA_POT_CHOICE = 1;
+    private final int SMALL_CHOICE = 0;
+    private final int MEDIUM_CHOICE = 1;
+    private final int BIG_CHOICE = 2;
+    private final int STAMINA_SMALL_CHOICE = 0;
+    private final int STAMINA_MEDIUM_CHOICE = 1;
+    private final int STAMINA_BIG_CHOICE = 2;
+
     // HEALTH POTS
     private HealthPot hpSmall = new HealthPot("Elixir of Nurture", 20, 0);
     private HealthPot hpMedium = new HealthPot("Elixir of Life", 45, 0);
@@ -67,6 +74,30 @@ public class gameModel {
 
 
     public void gameModel(){}
+
+    public int getSMALL_CHOICE() {
+        return SMALL_CHOICE;
+    }
+
+    public int getMEDIUM_CHOICE() {
+        return MEDIUM_CHOICE;
+    }
+
+    public int getBIG_CHOICE() {
+        return BIG_CHOICE;
+    }
+
+    public int getSTAMINA_SMALL_CHOICE() {
+        return STAMINA_SMALL_CHOICE;
+    }
+
+    public int getSTAMINA_MEDIUM_CHOICE() {
+        return STAMINA_MEDIUM_CHOICE;
+    }
+
+    public int getSTAMINA_BIG_CHOICE() {
+        return STAMINA_BIG_CHOICE;
+    }
 
     public int getNoStamina() {
         return NO_STAMINA;

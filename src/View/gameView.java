@@ -1,6 +1,16 @@
 package View;
 
+import com.sun.security.jgss.GSSUtil;
+
 public class gameView {
+
+    public void lineBreak(){
+        System.out.println();
+    }
+
+    public void backOption(){
+        System.out.println("Back....");
+    }
 
     public void beginCombatDialogue(String playerName, String enemyName){
         System.out.println("Alright here we go, we have " + playerName + " up against " + enemyName +"!");
@@ -57,7 +67,7 @@ public class gameView {
         System.out.println("1. Melee - " + melee);
         System.out.println("2. Ranged - " + ranged);
         System.out.println("3. Back");
-
+        System.out.println();
     }
 
     public void invalidInput(){
@@ -113,7 +123,36 @@ public class gameView {
         }
     }
 
-    public void displayHealthPotOptions(String potions){
-        System.out.println(potions);
+    public void displayPotionOptions(){
+        System.out.println("Items:");
+        System.out.println("1. Health");
+        System.out.println("2. Stamina");
+        System.out.println("3. Back");
+        System.out.println();
     }
+
+    public void displayHealthPotOptions(String small, String medium, String big){
+        System.out.println("1. " + small);
+        System.out.println("2. " + medium);
+        System.out.println("3. " + big);
+        System.out.println("4. Back");
+        System.out.println();
+    }
+
+    public void playerChoseSmallHP(){
+        System.out.println("Drank small potion!");
+    }
+
+    public void playerChoseMediumHP(){
+        System.out.println("Drank medium potion!");
+    }
+
+    public void playerChoseBigHP(){
+        System.out.println("Drank big potion!");
+    }
+
+    public void playerChoseEmptyPotion(){
+        System.out.println("You don't have any to use!");
+    }
+
 }

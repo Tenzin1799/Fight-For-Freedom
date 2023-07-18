@@ -1,6 +1,7 @@
 package Controller;
 import Model.*;
 import Model.Characters.Fighter;
+import Model.Items.HealthPot;
 import View.*;
 import java.util.Random;
 import java.util.Scanner;
@@ -15,10 +16,11 @@ public class gameController {
         model.getPlayer().getWeapons().add(model.getUnarmed());
         model.getPlayer().getWeapons().add(model.getRocks());
         model.getPlayer().getInventory().add(model.getPlayerHealthPotions());
-        model.getPlayer().getInventory().get(0).add(model.getHpBig());
+        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpSmall());
+        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).addAmount();
+        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpMedium());
+        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpBig());
         model.getPlayer().getInventory().add(model.getPlayerStaminaPotions());
-        model.getPlayer().getInventory().get(0).add(model.getHpSmall());
-        model.getPlayer().getInventory().get(0).add(model.getHpBig());
 
 
 
@@ -63,24 +65,31 @@ public class gameController {
                                 break;
                             case "3":
                                 // RETURN TO OPTIONS
-                                System.out.println("Back");
+                                view.backOption();
                         }
                         break;
                     case "2":
                         //  USE ITEMS
-                        System.out.println("Display pot options method here");
                         userPotionOptions(p1, npc);
                         switch (getUserInputThreeOptions()){
                             case "1":
                                 // HEALTH POT
-                                playerUseHealthPot(p1, model.getHEALTH_POT_CHOICE());
+                                playerChooseHealthPots(p1,
+                                        p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).toString(),
+                                        p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).toString(),
+                                        p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getBIG_CHOICE()).toString()
+                                        );
                                 break;
                             case "2":
                                 // STAMINA POT
-//                                playerUseStaminaPot(p1, model.getSTAMINA_POT_CHOICE());
+//                                playerChooseStaminaPot(p1,
+//                                        p1.getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getSMALL_CHOICE()).toString(),
+//                                        p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).toString(),
+//                                        p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getBIG_CHOICE()).toString());
                                 break;
                             case "3":
                                 // BACK
+                                view.backOption();
                         }
                         break;
                     case "3":
@@ -143,7 +152,7 @@ public class gameController {
                 p1.getWeapons().get(model.getMELEE_CHOICE()).getStaminaUsage());
         view.enterNext();
         kb.nextLine();
-        System.out.println();
+        view.lineBreak();
     }
 
     public void playerRangedAttack(Fighter p1, Fighter npc){
@@ -159,11 +168,52 @@ public class gameController {
     }
 
     public void userPotionOptions(Fighter p1, Fighter npc){
-        view.displayHealthPotOptions(p1.getInventory().toString());
+        view.displayPotionOptions();
     }
 
-    public void playerUseHealthPot(Fighter p1, int typeOfPotion){
-
+    public void playerChooseHealthPots(Fighter p1, String small, String medium, String big){
+        view.displayHealthPotOptions(small, medium, big);
+        switch (getUserInputFourOptions()){
+            case "1":
+                if (p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE())
+                                .getAmount() > 0){
+                    ((HealthPot)(p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE())))
+                            .useItem(p1);
+                    view.playerChoseSmallHP();
+                    p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).minusAmount();
+                } else {
+                    view.playerChoseEmptyPotion();
+                }
+                break;
+            case "2":
+                if (p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE())
+                        .getAmount() > 0){
+                    ((HealthPot)(p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE())))
+                            .useItem(p1);
+                    view.playerChoseMediumHP();
+                    p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).minusAmount();
+                } else {
+                    view.playerChoseEmptyPotion();
+                }
+                break;
+            case "3":
+                if (p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getBIG_CHOICE())
+                        .getAmount() > 0){
+                    ((HealthPot)(p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getBIG_CHOICE())))
+                            .useItem(p1);
+                    view.playerChoseBigHP();
+                    p1.getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getBIG_CHOICE()).minusAmount();
+                } else {
+                    view.playerChoseEmptyPotion();
+                }
+                break;
+            case "4":
+                view.backOption();
+        }
+    }
+    
+    public void playerChooseStaminaPot(Fighter p1, String small, String medium, String big){
+        
     }
 
     public void userAttackOptions(Fighter p1, Fighter npc){

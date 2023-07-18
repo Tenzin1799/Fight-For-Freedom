@@ -5,12 +5,18 @@ public class Weapon {
     private int damage;
     private int price;
     private int hitChance;
+    private int staminaUsage;
 
-    public Weapon(String name, int dmg, int price, int hitChance){
+    public Weapon(String name, int dmg, int price, int hitChance, int staminaUsage){
         this.name = name;
         this.damage = dmg;
         this.price = price;
         this.hitChance = hitChance;
+        this.staminaUsage = staminaUsage;
+    }
+
+    public String toString(){
+        return name;
     }
 
     public int getHitChance(){
@@ -39,5 +45,9 @@ public class Weapon {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getStaminaUsage() {
+        return staminaUsage;
     }
 }

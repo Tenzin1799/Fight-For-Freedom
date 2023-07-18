@@ -7,7 +7,7 @@ import Model.Weapons.Weapon;
 import java.util.List;
 
 public class Player extends Fighter {
-    int money;
+    private int money;
     public Player(String name, int hp, int stamina, int money, List<Item> inventory, List<Weapon> weapons) {
         super(name, hp, stamina, inventory, weapons);
         this.money = money;

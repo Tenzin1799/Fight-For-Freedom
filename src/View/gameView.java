@@ -64,6 +64,30 @@ public class gameView {
         System.out.println("Sorry, try again.");
     }
 
+    public void meleeAttack(String meleeWeapon){
+        System.out.println("You attacked with " + meleeWeapon + "!");
+    }
+
+    public void counterHit(){
+        System.out.println("Enemy counter attacks and lands!");
+    }
+
+    public void enterNext(){
+        System.out.print("Enter any key: ");
+    }
+
+    public void playerNoStamina(){
+        System.out.println("You have no Stamina! You will have to rest! Brace for enemy attack!");
+    }
+
+    public void enemyAttacks(String weaponName){
+        System.out.println("Enemy attacks with " +weaponName + "!");
+    }
+
+    public void enemyDied(String name){
+        System.out.println(name +" falls to his death!");
+    }
+
     public void bigDivider(){
         for (int i = 0; i < 10; i++){
             for (int j = 0; j < 20; j++){

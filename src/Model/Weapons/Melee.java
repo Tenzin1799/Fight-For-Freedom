@@ -1,8 +1,8 @@
 package Model.Weapons;
 
 public class Melee extends Weapon{
-    public Melee(String name, int dmg, int price, int hitChance) {
-        super(name, dmg, price, hitChance);
+    public Melee(String name, int dmg, int price, int hitChance, int staminaUsage) {
+        super(name, dmg, price, hitChance, staminaUsage);
     }
 
     // random number between 1-10

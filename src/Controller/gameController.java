@@ -31,6 +31,9 @@ public class gameController {
         npc.getWeapons().add(model.getWoodSword());
         npc.getWeapons().add(model.getPistol());
         view.beginCombatDialogue(p1.getName(), npc.getName());
+        view.enterNext();
+        kb.nextLine();
+        view.lineBreak();
         // while player is alive && npc is alive, add loop later
         while(p1.getHP() > model.getNoHP() &&
                 npc.getHP() > model.getNoHP()) {

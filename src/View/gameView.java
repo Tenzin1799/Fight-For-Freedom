@@ -93,7 +93,7 @@ public class gameView {
     }
 
     public void enemyMissedRangedAttack(){
-        System.out.println("Enemy missed!!");
+        System.out.println("Enemy missed a long ranged attack!!");
     }
 
     public void enterNext(){

@@ -153,4 +153,8 @@ public class gameView {
         System.out.println("You don't have any to use!");
     }
 
+
+    public void displayTaunt(){
+        System.out.println("you: \"That's all you got??\"");
+    }
 }

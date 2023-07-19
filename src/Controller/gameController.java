@@ -100,6 +100,7 @@ public class gameController {
                         break;
                     case "3":
                         // TAUNT
+                        playerChooseTaunt();
                         break;
                     case "4":
                         // SURRENDER
@@ -263,6 +264,10 @@ public class gameController {
             case "4":
                 view.backOption();
         }
+    }
+
+    public void playerChooseTaunt(){
+        view.displayTaunt();
     }
 
     public void userAttackOptions(Fighter p1, Fighter npc){

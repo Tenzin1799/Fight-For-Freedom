@@ -13,6 +13,10 @@ public class Fighter {
 
     public Fighter(){}
 
+    public Fighter(String name){
+        this.name = name;
+    }
+
     public List<Weapon> getWeapons() {
         return weapons;
     }

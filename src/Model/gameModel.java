@@ -23,9 +23,6 @@ public class gameModel {
     private final int SMALL_CHOICE = 0;
     private final int MEDIUM_CHOICE = 1;
     private final int BIG_CHOICE = 2;
-    private final int STAMINA_SMALL_CHOICE = 0;
-    private final int STAMINA_MEDIUM_CHOICE = 1;
-    private final int STAMINA_BIG_CHOICE = 2;
 
     // HEALTH POTS
     private HealthPot hpSmall = new HealthPot("Elixir of Nurture", 20, 0);
@@ -47,6 +44,7 @@ public class gameModel {
     private Weapon energySword = new Melee("Energy Sword", 100, 500,
             9, 15);
     private int counterHitDamage = 10;
+
     // RANGED WEAPONS
     private Weapon rocks = new Ranged("Rocks", 10, 0,
             10, 10);
@@ -59,6 +57,7 @@ public class gameModel {
     private Weapon energyRifle = new Ranged("Energy Rifle", 150, 800,
             90, 40);
     private int missedRange = 100;
+
     // IDK YET
     private List<List<Item>> playerInventory = new ArrayList<>();
     private List<Item> playerHealthPotions = new ArrayList<>();
@@ -67,18 +66,34 @@ public class gameModel {
     private List<List<Item>> testNPCInventory = new ArrayList<>();
     private List<Weapon> testNPCWeapons = new ArrayList<>();
     private List<Item> testNPCPotions = new ArrayList<>();
-    // CHARACTERS
-    private Fighter p1 = new Player("Tenzin", 100, 150,
-            30, playerInventory, playerWeapons);
-    private int basicStaminaRegen = 25;
-    private Fighter testNPC = new Player("Chump", 50, 200,
-            100, testNPCInventory, testNPCWeapons);
+
+    //NEEDED FOR ENEMY COMBAT
     private int enemyInitialChoice = 1;    // CHANGE TO 2 LATER TO USE ITEMS FOR ENEMY
+    // (if they should be allowed to use items)
+    // (you need to add items to their inventory if you do this)
     private int enemyChoice;
 
+    // CHARACTERS
+    private final int FULL_HP = 100;
+    private final int FULL_STAMINA = 150;
+    private Fighter p1 = new Player("Tenzin", FULL_HP, FULL_STAMINA,
+            30, playerInventory, playerWeapons);
+    private int basicStaminaRegen = 25;
+    private Fighter testNPC = new Fighter("Chump", 50, 200, testNPCInventory, testNPCWeapons);
+    private Fighter shopKeeper = new Fighter("Ze'tchi");
 
 
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
     public void gameModel(){}
+
+    public int getFullHP(){
+        return FULL_HP;
+    }
+
+    public int getFullStamina(){
+        return FULL_STAMINA;
+    }
 
     public int getSMALL_CHOICE() {
         return SMALL_CHOICE;
@@ -90,18 +105,6 @@ public class gameModel {
 
     public int getBIG_CHOICE() {
         return BIG_CHOICE;
-    }
-
-    public int getSTAMINA_SMALL_CHOICE() {
-        return STAMINA_SMALL_CHOICE;
-    }
-
-    public int getSTAMINA_MEDIUM_CHOICE() {
-        return STAMINA_MEDIUM_CHOICE;
-    }
-
-    public int getSTAMINA_BIG_CHOICE() {
-        return STAMINA_BIG_CHOICE;
     }
 
     public int getNoStamina() {
@@ -184,7 +187,6 @@ public class gameModel {
         return energyRifle;
     }
 
-
     public List<Weapon> getPlayerWeapons() {
         return playerWeapons;
     }
@@ -204,6 +206,8 @@ public class gameModel {
     public Fighter getTestNPC() {
         return testNPC;
     }
+
+    public Fighter getShopKeeper(){return shopKeeper;}
 
     public int getCounterHitDamage(){
         return counterHitDamage;
@@ -244,7 +248,6 @@ public class gameModel {
     public int getSTAMINA_POT_CHOICE() {
         return STAMINA_POT_CHOICE;
     }
-
 
     public List<Item> getTestNPCPotions() {
         return testNPCPotions;

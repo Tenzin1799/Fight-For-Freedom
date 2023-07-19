@@ -18,7 +18,7 @@ public class gameController {
         model.getPlayer().getWeapons().add(model.getRocks());
         model.getPlayer().getInventory().add(model.getPlayerHealthPotions());
         model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpSmall());
-        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).addAmount();
+//        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).addAmount();
         model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpMedium());
         model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpBig());
         model.getPlayer().getInventory().add(model.getPlayerStaminaPotions());
@@ -28,6 +28,15 @@ public class gameController {
 
 
         combat(model.getPlayer(), model.getNPC());
+    }
+
+    public void shop(boolean visited){
+        if (!visited){
+            view.visitShopFirstTime();
+
+            visited = true;
+        }
+        view.visitShop();
     }
 
     public void combat(Fighter p1, Fighter npc){
@@ -46,6 +55,11 @@ public class gameController {
             playerAttack(p1, npc);
             // ENEMY ATTACK TURN
             enemyAttack(p1, npc);
+        }
+        if (npc.getHP() <= 0) {
+            // Setting HP and Stamina to full after winning a fight
+            p1.setHP(model.getFullHP());
+            p1.setStamina(model.getFullStamina());
         }
     }
 
@@ -105,6 +119,7 @@ public class gameController {
                     case "4":
                         // SURRENDER
                         // maybe you can surrender 2 fights maximum, before you die
+                        System.out.println("Not implemented yet.");
                 }
             } else {
                 view.playerNoStamina();
@@ -137,7 +152,7 @@ public class gameController {
                     break;
                 case 2:
                     // USE ITEMS
-                    System.out.println("item Used");
+                    System.out.println("enemy item used");
                     break;
             }
             view.enterNext();
@@ -268,6 +283,7 @@ public class gameController {
 
     public void playerChooseTaunt(){
         view.displayTaunt();
+        view.lineBreak();
     }
 
     public void userAttackOptions(Fighter p1, Fighter npc){

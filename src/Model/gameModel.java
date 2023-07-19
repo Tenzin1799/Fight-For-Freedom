@@ -4,6 +4,7 @@ import Model.Characters.Fighter;
 import Model.Characters.Player;
 import Model.Items.HealthPot;
 import Model.Items.Item;
+import Model.Items.StaminaPot;
 import Model.Weapons.Melee;
 import Model.Weapons.Ranged;
 import Model.Weapons.Weapon;
@@ -30,6 +31,10 @@ public class gameModel {
     private HealthPot hpSmall = new HealthPot("Elixir of Nurture", 20, 0);
     private HealthPot hpMedium = new HealthPot("Elixir of Life", 45, 0);
     private HealthPot hpBig = new HealthPot("Elixir of The Gods", 75, 0);
+    private StaminaPot staminaSmall = new StaminaPot("Energy Drink", 20, 0);
+    private StaminaPot staminaMedium = new StaminaPot("Adrenaline Acid", 50, 0);
+    private StaminaPot staminaBig = new StaminaPot("Liquid NITRO-9000", 100, 0);
+
     // MELEE WEAPONS
     private Weapon unarmed = new Melee("Fists", 10, 0,
             1, 10);
@@ -125,6 +130,18 @@ public class gameModel {
 
     public HealthPot getHpBig() {
         return hpBig;
+    }
+
+    public StaminaPot getStaminaSmall() {
+        return staminaSmall;
+    }
+
+    public StaminaPot getStaminaMedium() {
+        return staminaMedium;
+    }
+
+    public StaminaPot getStaminaBig() {
+        return staminaBig;
     }
 
     public Weapon getUnarmed() {

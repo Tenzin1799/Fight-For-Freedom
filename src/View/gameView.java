@@ -129,7 +129,7 @@ public class gameView {
         System.out.println();
     }
 
-    public void displayHealthPotOptions(String small, String medium, String big){
+    public void displaySpecificPotOptions(String small, String medium, String big){
         System.out.println("1. " + small);
         System.out.println("2. " + medium);
         System.out.println("3. " + big);
@@ -137,15 +137,15 @@ public class gameView {
         System.out.println();
     }
 
-    public void playerChoseSmallHP(){
+    public void playerChoseSmallPotion(String name){
         System.out.println("Drank small potion!");
     }
 
-    public void playerChoseMediumHP(){
+    public void playerChoseMediumPotion(String name){
         System.out.println("Drank medium potion!");
     }
 
-    public void playerChoseBigHP(){
+    public void playerChoseBigPotion(String name){
         System.out.println("Drank big potion!");
     }
 

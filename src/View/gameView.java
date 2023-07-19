@@ -52,40 +52,55 @@ public class gameView {
     //////////////////////// SHOP ///////////////////////////////
     /////////////////////////////////////////////////////////////
     public void visitShopFirstTime(){
-        System.out.println("A bell chimes as you step inside the shop. The entire place is lit with " +
-                "a red light, distorting the colors of everything inside. Even your clothes and skin have turned red. " +
-                "Up ahead you see what appears to be the register. A long table stretching from " +
-                "one end of the room to the other. Behind the register is a door leading to a backroom, with a " +
-                "partially torn sign that reads:\n\"Blorployees Only! MEANING ME. I WILL SHOOT ON SIGHT.\"");
+        System.out.println("\tA bell chimes as you step inside the shop. The entire place is lit with \n" +
+                "a red light, distorting the colors of everything inside. Even your clothes and skin have turned red. \n" +
+                "Up ahead you see what appears to be the register. A long table stretching from \n" +
+                "one end of the room to the other. Behind the register is a door leading to a backroom with a \n" +
+                "partially torn sign that reads:\n\"Blorployees Only! MEANING ME. STAY OUT.\"");
     }
 
-    public void visitShopFirstTime2(){
-        System.out.println("The backroom door swings open. Slamming against the wall beside it. " +
-                "From the backroom a large blob-like species steps out. Or... more like, glides out. " +
-                "It's movement isn't quite a slither. You aren't really sure how this creature is moving. But it is. " +
-                "The blob stops behind the register, and two little black balls plop out from within it. " +
-                "They slide down it's jiggling body, then quickly slides up to the top. Locking into place. " +
-                "The being stands still, however the jiggle ensues. Then suddenly you hear: ");
-        System.out.println("The Bloated One: \"Well??? Do you need something?\"");
+    public void visitShopFirstTime2(String name){
+        System.out.println("The backroom door swings open. Slamming against the wall beside it. \n" +
+                "From the backroom a large blob-like species steps out. Or... more like, glides out. \n" +
+                "It's movement isn't quite a slither. You aren't really sure how this creature is moving. But it is. \n" +
+                "The blob stops behind the register, and two little black balls plop out from within it. \n" +
+                "They slide down it's jiggling body, then quickly slides up to the top. Locking into place. \n" +
+                "The being stands still, however the jiggle ensues. Then suddenly you hear: \n");
+        System.out.println(name+": \"Well??? Do you need something?\"");
     }
 
-    public void visitShopFirstTime3_1(){
+    public void displayFirstTimeShopOptions() {
+        System.out.println("1. \"Uh... Hello. I wanted to see what items you were selling.\"");
+        System.out.println("2. \"Yes. Sorry... What are you?\"");
+        System.out.println("3. \"How the hell- Where is your mouth- HOW ARE YOU SPEAKING IN MY MIND!??\"");
+        System.out.println("4. \"On second thought. I think I'm okay.\"");
+    }
+
+    public void visitShopFirstTime3_1(String name){
         // "Uh.. Hello. I wanted to see what items you were selling."
-        // shopKeeper will show items
+        System.out.println(name+": \"Ah, good. At first I thought you were one of those weirdos \n" +
+                "that like to make long, awkward, uninterrupted... slightly romantic.. but still awkward eye-contact.\n" +
+                "Anyways. I have plenty of items in store. Weapons, nourishments--- Well I guess that's all I have. \n" +
+                "So what will it be?\"");
+        // then use normal shop function
     }
 
-    public void visitShopFirstTime3_2(){
+    public void visitShopFirstTime3_2(String name){
         // "Hi- Sorry... What are you??"
-        // shopKeeper will say "First time seeing a Ba'Chunko eh? Yeah. Don't worry. I  "
+        System.out.println(name +": \"First time seeing a Ba'Chunko eh? Don't worry, not my first rodeo. \n" +
+                "Space is too big for one to come across every species. Hell, I've been running this shop for \n" +
+                "for decades and I still see new folks every day. Any-who. I don't have all day, so if you would like to \n" +
+                "make a purchase, let's get on with it.\"");
+        // use normal shop function
     }
 
-    public void visitShopFirstTime3_3(){
+    public void visitShopFirstTime3_3(String name){
         // "How the hell- Where is your mouth- HOW ARE YOU SPEAKING IN MY MIND?"
         // shopKeeper will stare at you. sigh. and says "why do I always get idiots. oh right.
         // I'm the only shop in town. Look buddy, I don't have all day. Do you want to buy something or no?"
     }
 
-    public void visitShopFirstTime3_4(){
+    public void visitShopFirstTime3_4(String name){
         // "On second thought. I think I'm okay. (leaves)"
     }
 

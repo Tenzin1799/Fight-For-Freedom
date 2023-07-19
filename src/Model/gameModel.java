@@ -80,7 +80,7 @@ public class gameModel {
             30, playerInventory, playerWeapons);
     private int basicStaminaRegen = 25;
     private Fighter testNPC = new Fighter("Chump", 50, 200, testNPCInventory, testNPCWeapons);
-    private Fighter shopKeeper = new Fighter("Ze'tchi");
+    private Fighter shopKeeper = new Fighter("The Bloated One");
 
 
 //////////////////////////////////////////////////////////////////////////////////

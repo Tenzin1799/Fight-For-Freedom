@@ -18,7 +18,7 @@ public class gameController {
         model.getPlayer().getWeapons().add(model.getRocks());
         model.getPlayer().getInventory().add(model.getPlayerHealthPotions());
         model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpSmall());
-//        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).addAmount();
+//       model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).addAmount();
         model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpMedium());
         model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpBig());
         model.getPlayer().getInventory().add(model.getPlayerStaminaPotions());
@@ -27,25 +27,47 @@ public class gameController {
         model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaBig());
 
 
-        combat(model.getPlayer(), model.getNPC());
+        shop(false);
+//        combat(model.getPlayer(), model.getNPC());
     }
 
     public void shop(boolean visited){
         if (!visited){
-            view.visitShopFirstTime();
-
+            visitShopFirstTime();
             visited = true;
         }
         view.visitShop();
     }
+    
+    public void visitShopFirstTime(){
+        view.visitShopFirstTime();
+        view.lineBreak();
+        next_input_lineBreak();
+        view.visitShopFirstTime2(model.getShopKeeper().getName());
+        view.lineBreak();
+        view.displayFirstTimeShopOptions();
+        switch(getUserInputFourOptions()){
+            case "1":
+                view.visitShopFirstTime3_1(model.getShopKeeper().getName());
+                break;
+            case "2":
+                view.visitShopFirstTime3_2(model.getShopKeeper().getName());
+                break;
+            case "3":
+                view.visitShopFirstTime3_3(model.getShopKeeper().getName());
+                break;
+            case "4":
+                view.visitShopFirstTime3_4(model.getShopKeeper().getName());
+                break;
+        }
+    }
+
 
     public void combat(Fighter p1, Fighter npc){
         npc.getWeapons().add(model.getWoodSword());
         npc.getWeapons().add(model.getPistol());
         view.beginCombatDialogue(p1.getName(), npc.getName());
-        view.enterNext();
-        kb.nextLine();
-        view.lineBreak();
+        next_input_lineBreak();
         // while player is alive && npc is alive, add loop later
         while(p1.getHP() > model.getNoHP() &&
                 npc.getHP() > model.getNoHP()) {
@@ -172,9 +194,7 @@ public class gameController {
         }
         p1.setStamina(p1.getStamina() -
                 p1.getWeapons().get(model.getMELEE_CHOICE()).getStaminaUsage());
-        view.enterNext();
-        kb.nextLine();
-        view.lineBreak();
+        next_input_lineBreak();
     }
 
     public void playerRangedAttack(Fighter p1, Fighter npc){
@@ -184,9 +204,7 @@ public class gameController {
         } else {
             view.missedRangedAttack();
         }
-        view.enterNext();
-        kb.nextLine();
-        System.out.println();
+        next_input_lineBreak();
     }
 
     public void userPotionOptions(Fighter p1, Fighter npc){
@@ -291,6 +309,22 @@ public class gameController {
                 p1.getWeapons().get(model.getRANGED_CHOICE()).toString());
     }
 
+    public void meleeHitChance(){
+        if(randomNumberGenerator(model.getCounterHitDamage()) >=
+                model.getPlayer().getWeapons().get(model.getMELEE_CHOICE()).getHitChance()){
+            model.getPlayer().setHP(model.getPlayer().getHP()-model.getCounterHitDamage());
+            view.counterHit();
+        }
+    }
+
+    public boolean rangedMissChance(){
+        if (randomNumberGenerator(model.getMissedRange()) <=
+                model.getPlayer().getWeapons().get(model.getRANGED_CHOICE()).getHitChance()){
+            return true;        // RETURNS TRUE IF HIT WAS SUCCESSFUL
+        }
+        return false;
+    }
+
     public String getUserInputFourOptions(){
         boolean validInput = false;
         String input = "";
@@ -326,25 +360,16 @@ public class gameController {
         return input;
     }
 
-    public void meleeHitChance(){
-        if(randomNumberGenerator(model.getCounterHitDamage()) >=
-                model.getPlayer().getWeapons().get(model.getMELEE_CHOICE()).getHitChance()){
-            model.getPlayer().setHP(model.getPlayer().getHP()-model.getCounterHitDamage());
-            view.counterHit();
-        }
-    }
-
-    public boolean rangedMissChance(){
-        if (randomNumberGenerator(model.getMissedRange()) <=
-                model.getPlayer().getWeapons().get(model.getRANGED_CHOICE()).getHitChance()){
-            return true;        // RETURNS TRUE IF HIT WAS SUCCESSFUL
-        }
-        return false;
-    }
-
     public int randomNumberGenerator(int range){
         Random rand = new Random();
         return rand.nextInt(range+1);
     }
+
+    public void next_input_lineBreak(){
+        view.enterNext();
+        kb.nextLine();
+        view.lineBreak();
+    }
+
 
 }

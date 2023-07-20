@@ -52,7 +52,7 @@ public class gameView {
     //////////////////////// SHOP ///////////////////////////////
     /////////////////////////////////////////////////////////////
     public void visitShopFirstTime(){
-        System.out.println("\tA bell chimes as you step inside the shop. The entire place is lit with \n" +
+        System.out.println("A bell chimes as you step inside the shop. The entire place is lit with \n" +
                 "a red light, distorting the colors of everything inside. Even your clothes and skin have turned red. \n" +
                 "Up ahead you see what appears to be the register. A long table stretching from \n" +
                 "one end of the room to the other. Behind the register is a door leading to a backroom with a \n" +
@@ -61,9 +61,9 @@ public class gameView {
 
     public void visitShopFirstTime2(String name){
         System.out.println("The backroom door swings open. Slamming against the wall beside it. \n" +
-                "From the backroom a large blob-like species steps out. Or... more like, glides out. \n" +
+                "From the backroom a large blob-like entity steps out. Or... more like, glides out. \n" +
                 "It's movement isn't quite a slither. You aren't really sure how this creature is moving. But it is. \n" +
-                "The blob stops behind the register, and two little black balls plop out from within it. \n" +
+                "The green-tinted blob stops behind the register, and two little black balls plop out from within it. \n" +
                 "They slide down it's jiggling body, then quickly slides up to the top. Locking into place. \n" +
                 "The being stands still, however the jiggle ensues. Then suddenly you hear: \n");
         System.out.println(name+": \"Well??? Do you need something?\"");
@@ -96,16 +96,28 @@ public class gameView {
 
     public void visitShopFirstTime3_3(String name){
         // "How the hell- Where is your mouth- HOW ARE YOU SPEAKING IN MY MIND?"
-        // shopKeeper will stare at you. sigh. and says "why do I always get idiots. oh right.
-        // I'm the only shop in town. Look buddy, I don't have all day. Do you want to buy something or no?"
+        System.out.println("The blob's black orbs blink, one after the other. Then a soft sigh is released \n" +
+                "while it's body ripples outwards from it's center.\n");
+        System.out.println(name+ ": \"Why do I always get the dumb ones. Ah, right. I'm the only shop in town.\n" +
+                "Look, I don't have all day. Are you here to buy something or not?\"");
     }
 
     public void visitShopFirstTime3_4(String name){
         // "On second thought. I think I'm okay. (leaves)"
+        System.out.println(name + ": \"Alrighty. You look new around here. A little word of advice, everyone on this \n" +
+                "dump is only out here for themselves. Be careful who you surround yourself with. Anyways, take care,\n" +
+                "come by any time.\"");
     }
 
     public void visitShop(){
 
+    }
+
+    public void displayShopOptions(){
+        System.out.println("1. Weapons");
+        System.out.println("2. Health Items");
+        System.out.println("3. Stamina Items");
+        System.out.println("4. Back");
     }
 
 

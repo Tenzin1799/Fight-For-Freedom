@@ -25,7 +25,7 @@ public class gameController {
         model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaSmall());
         model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaMedium());
         model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaBig());
-
+        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).addAmount();
 
         shop(false);
 //        combat(model.getPlayer(), model.getNPC());
@@ -46,15 +46,25 @@ public class gameController {
         view.visitShopFirstTime2(model.getShopKeeper().getName());
         view.lineBreak();
         view.displayFirstTimeShopOptions();
+        view.lineBreak();
         switch(getUserInputFourOptions()){
             case "1":
                 view.visitShopFirstTime3_1(model.getShopKeeper().getName());
+                view.displayShopOptions();
+                view.lineBreak();
+                getUserInputFourOptions();
                 break;
             case "2":
                 view.visitShopFirstTime3_2(model.getShopKeeper().getName());
+                view.displayShopOptions();
+                view.lineBreak();
+                getUserInputFourOptions();
                 break;
             case "3":
                 view.visitShopFirstTime3_3(model.getShopKeeper().getName());
+                view.displayShopOptions();
+                view.lineBreak();
+                getUserInputFourOptions();
                 break;
             case "4":
                 view.visitShopFirstTime3_4(model.getShopKeeper().getName());

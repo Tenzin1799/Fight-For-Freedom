@@ -137,6 +137,55 @@ public class gameController {
         }
     }
 
+    public void purchaseMeleeItems(){
+        boolean playerDoneBuying = false;
+        while (!playerDoneBuying){
+            view.displayShopMeleeOptions(model.getWoodSword().getName(), model.getSteelSword().getName(),
+                    model.getWarHammer().getName(), model.getEnergySword().getName(),
+                    model.getWoodSword().getPrice(), model.getSteelSword().getPrice(),
+                    model.getWarHammer().getPrice(), model.getEnergySword().getPrice(),
+                    ((Player)model.getPlayer()).getMoney(),
+                    model.getPlayer().getWeapons().get(model.getMELEE_CHOICE()).getName());
+            switch(getUserInputFiveOptions()){
+                case "1":
+                    // purchase
+                    break;
+                case "2":
+                    // purchase
+                    break;
+                case "3":
+                    // purchase
+                    break;
+                case "4":
+                    //purchase
+                    break;
+                case "5":
+                    view.backOption();
+                    playerDoneBuying = true;
+            }
+        }
+    }
+
+    public void purchaseCombatItems(){
+        boolean playerDoneBuying = false;
+        while(!playerDoneBuying){
+            view.displayShopCombatOptions();
+            switch (getUserInputThreeOptions()){
+                case "1":
+                    //melee
+                    purchaseMeleeItems();
+                    break;
+                case "2":
+                    // ranged
+                    break;
+                case "3":
+                    // back
+                    view.backOption();
+                    playerDoneBuying = true;
+            }
+        }
+    }
+
     public void purchaseItems(){
         boolean playerDoneBuying = false;
         while (!playerDoneBuying) {
@@ -144,36 +193,13 @@ public class gameController {
             view.lineBreak();
             switch (getUserInputFourOptions()) {
                 case "1":
-                    //display
-                    //melee
-                    // display
-                    // wood sword
-                    // bent blade
-                    // next
-                    // electric war hammer
-                    // energy sword
-                    // back
-                    // back
-                    //ranged
-                    // display
-                    // sling shot
-                    // pistol
-                    // next
-                    // shotgun
-                    // energy rifle
-                    // back
-                    //back
-                    //back
+                    purchaseCombatItems();
                     break;
                 case "2":
                     purchaseHealthItem();
                     break;
                 case "3":
                     purchaseStaminaItem();
-                    // small stamina
-                    // med
-                    // big
-                    // back
                     break;
                 case "4":
                     view.leaveShop(model.getShopKeeper().getName());
@@ -481,6 +507,25 @@ public class gameController {
             return true;        // RETURNS TRUE IF HIT WAS SUCCESSFUL
         }
         return false;
+    }
+
+    public String getUserInputFiveOptions(){
+        boolean validInput = false;
+        String input = "";
+        while (!validInput){
+            view.userEnter();
+            input = kb.nextLine();
+            if (input.equals("1") ||
+                    input.equals("2")||
+                    input.equals("3")||
+                    input.equals("4")||
+                    input.equals("5")){
+                validInput = true;
+            } else {
+                view.invalidInput();
+            }
+        }
+        return input;
     }
 
     public String getUserInputFourOptions(){

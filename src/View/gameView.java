@@ -119,6 +119,25 @@ public class gameView {
         System.out.println("You've purchased " + name +".");
     }
 
+    public void displayShopCombatOptions(){
+        System.out.println("(You will automatically use the most recent weapon purchased. There's no point \n" +
+                "in buying a weaker weapon once you already have a better one. Unless you enjoy pain.)");
+        System.out.println("1. Melee");
+        System.out.println("2. Ranged");
+        System.out.println("3. Back");
+    }
+
+    public void displayShopMeleeOptions(String wood,  String blade, String hammer, String energy,
+                                        int woodPrice, int bladePrice, int hammerPrice, int energyPrice,
+                                        int playerMoney, String playerMeleeWeapon){
+        System.out.println("Your money: $" + playerMoney + " | Your melee weapon: " + playerMeleeWeapon);
+        System.out.println("1. " + wood +" - $" + woodPrice);
+        System.out.println("2. " + blade +" - $" + bladePrice);
+        System.out.println("3. " + hammer +" - $" + hammerPrice);
+        System.out.println("4. " + energy +" - $" + energyPrice);
+        System.out.println("5. Back");
+    }
+
     //////////////////////// COMBAT /////////////////////////////
     /////////////////////////////////////////////////////////////
     public void beginCombatDialogue(String playerName, String enemyName){

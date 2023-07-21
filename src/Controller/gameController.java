@@ -1,6 +1,7 @@
 package Controller;
 import Model.*;
 import Model.Characters.Fighter;
+import Model.Characters.Player;
 import Model.Items.HealthPot;
 import Model.Items.StaminaPot;
 import View.*;
@@ -27,48 +28,195 @@ public class gameController {
         model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaBig());
         model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).addAmount();
 
-        shop(false);
+        shop(model.getVisitedShop());
 //        combat(model.getPlayer(), model.getNPC());
     }
 
     public void shop(boolean visited){
-        if (!visited){
+        if (visited){
             visitShopFirstTime();
-            visited = true;
+            model.setVisitedShop(true);
         }
-        view.visitShop();
+        view.visitShop(model.getShopKeeper().getName());
+        purchaseItems();
+    }
+
+    public void displayMelee(){
+
+    }
+
+    public void purchaseHealthItem(){
+        boolean playerDoneBuying = false;
+        // while the player is still buying, and has more money than 0, stay in loop
+        while (!playerDoneBuying && ((Player)model.getPlayer()).getMoney() > model.getNO_MONEY()){
+            view.displayShopPotOptions(model.getHpSmall().toString(), model.getHpSmall().getPrice(),
+                    model.getHpMedium().toString(), model.getHpMedium().getPrice(),
+                    model.getHpBig().toString(), model.getHpBig().getPrice(),
+                    ((Player) model.getPlayer()).getMoney());
+            view.lineBreak();
+            switch(getUserInputFourOptions()) {
+                case "1":
+                    if (((Player)model.getPlayer()).getMoney() > model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).getPrice()) {
+                        view.purchasedItem(model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).getName());
+                        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).addAmount();
+                        ((Player)model.getPlayer()).setMoney(((Player)model.getPlayer()).getMoney() -
+                                model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "2":
+                    if (((Player)model.getPlayer()).getMoney() > model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).getPrice()) {
+                        view.purchasedItem(model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).getName());                        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).addAmount();
+                        ((Player)model.getPlayer()).setMoney(((Player)model.getPlayer()).getMoney() -
+                                model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "3":
+                    if (((Player)model.getPlayer()).getMoney() > model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getBIG_CHOICE()).getPrice()) {
+                        view.purchasedItem(model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getBIG_CHOICE()).getName());
+                        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getBIG_CHOICE()).addAmount();
+                        ((Player)model.getPlayer()).setMoney(((Player)model.getPlayer()).getMoney() -
+                                model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getBIG_CHOICE()).getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "4":
+                    view.backOption();
+                    playerDoneBuying = true;
+            }
+        }
     }
     
+    public void purchaseStaminaItem(){
+        boolean playerDoneBuying = false;
+        // while the player is still buying, and has more money than 0, stay in loop
+        while (!playerDoneBuying && ((Player)model.getPlayer()).getMoney() > model.getNO_MONEY()){
+            view.displayShopPotOptions(model.getStaminaSmall().toString(), model.getStaminaSmall().getPrice(),
+                    model.getStaminaMedium().toString(), model.getStaminaMedium().getPrice(),
+                    model.getStaminaBig().toString(), model.getStaminaBig().getPrice(),
+                    ((Player) model.getPlayer()).getMoney());
+            view.lineBreak();
+            switch(getUserInputFourOptions()) {
+                case "1":
+                    if (((Player)model.getPlayer()).getMoney() > model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getSMALL_CHOICE()).getPrice()) {
+                        view.purchasedItem(model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getSMALL_CHOICE()).getName());
+                        model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getSMALL_CHOICE()).addAmount();
+                        ((Player)model.getPlayer()).setMoney(((Player)model.getPlayer()).getMoney() -
+                                model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getSMALL_CHOICE()).getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "2":
+                    if (((Player)model.getPlayer()).getMoney() > model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).getPrice()) {
+                        view.purchasedItem(model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).getName());                        model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).addAmount();
+                        ((Player)model.getPlayer()).setMoney(((Player)model.getPlayer()).getMoney() -
+                                model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "3":
+                    if (((Player)model.getPlayer()).getMoney() > model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getBIG_CHOICE()).getPrice()) {
+                        view.purchasedItem(model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getBIG_CHOICE()).getName());
+                        model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getBIG_CHOICE()).addAmount();
+                        ((Player)model.getPlayer()).setMoney(((Player)model.getPlayer()).getMoney() -
+                                model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).get(model.getBIG_CHOICE()).getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "4":
+                    view.backOption();
+                    playerDoneBuying = true;
+            }
+        }
+    }
+
+    public void purchaseItems(){
+        boolean playerDoneBuying = false;
+        while (!playerDoneBuying) {
+            view.displayShopOptions();
+            view.lineBreak();
+            switch (getUserInputFourOptions()) {
+                case "1":
+                    //display
+                    //melee
+                    // display
+                    // wood sword
+                    // bent blade
+                    // next
+                    // electric war hammer
+                    // energy sword
+                    // back
+                    // back
+                    //ranged
+                    // display
+                    // sling shot
+                    // pistol
+                    // next
+                    // shotgun
+                    // energy rifle
+                    // back
+                    //back
+                    //back
+                    break;
+                case "2":
+                    purchaseHealthItem();
+                    break;
+                case "3":
+                    purchaseStaminaItem();
+                    // small stamina
+                    // med
+                    // big
+                    // back
+                    break;
+                case "4":
+                    view.leaveShop(model.getShopKeeper().getName());
+                    playerDoneBuying = true;
+            }
+        }
+    }
+
+
     public void visitShopFirstTime(){
         view.visitShopFirstTime();
         view.lineBreak();
         next_input_lineBreak();
+        view.bigDivider();
         view.visitShopFirstTime2(model.getShopKeeper().getName());
         view.lineBreak();
         view.displayFirstTimeShopOptions();
         view.lineBreak();
         switch(getUserInputFourOptions()){
             case "1":
+                view.bigDivider();
                 view.visitShopFirstTime3_1(model.getShopKeeper().getName());
                 view.displayShopOptions();
                 view.lineBreak();
                 getUserInputFourOptions();
                 break;
             case "2":
+                view.bigDivider();
                 view.visitShopFirstTime3_2(model.getShopKeeper().getName());
                 view.displayShopOptions();
                 view.lineBreak();
                 getUserInputFourOptions();
                 break;
             case "3":
+                view.bigDivider();
                 view.visitShopFirstTime3_3(model.getShopKeeper().getName());
                 view.displayShopOptions();
                 view.lineBreak();
                 getUserInputFourOptions();
                 break;
             case "4":
-                view.visitShopFirstTime3_4(model.getShopKeeper().getName());
-                break;
+                view.bigDivider();
+                view.leaveShop(model.getShopKeeper().getName());
         }
     }
 

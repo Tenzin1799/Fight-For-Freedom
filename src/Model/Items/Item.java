@@ -4,11 +4,17 @@ public class Item {
     int amount;
     String name;
     int booster;    //booster is the amt of hp/stamina restored
+    int price;
 
-    public Item(String name, int booster, int amount){
+    public Item(String name, int booster, int amount, int price){
         this.name = name;
         this.booster = booster;
         this.amount = amount;
+        this.price = price;
+    }
+
+    public int getPrice(){
+       return price;
     }
 
     public String getName() {

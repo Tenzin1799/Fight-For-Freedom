@@ -30,23 +30,7 @@ public class gameView {
     }
 
     public void enterNext(){
-        System.out.print("Enter any key: ");
-    }
-
-    public void displayPotionOptions(){
-        System.out.println("Items:");
-        System.out.println("1. Health");
-        System.out.println("2. Stamina");
-        System.out.println("3. Back");
-        System.out.println();
-    }
-
-    public void displaySpecificPotOptions(String small, String medium, String big){
-        System.out.println("1. " + small);
-        System.out.println("2. " + medium);
-        System.out.println("3. " + big);
-        System.out.println("4. Back");
-        System.out.println();
+        System.out.print("(Hit Enter to continue)");
     }
 
     //////////////////////// SHOP ///////////////////////////////
@@ -102,26 +86,38 @@ public class gameView {
                 "Look, I don't have all day. Are you here to buy something or not?\"");
     }
 
-    public void visitShopFirstTime3_4(String name){
+    public void leaveShop(String name){
         // "On second thought. I think I'm okay. (leaves)"
-        System.out.println(name + ": \"Alrighty. You look new around here. A little word of advice, everyone on this \n" +
-                "dump is only out here for themselves. Be careful who you surround yourself with. Anyways, take care,\n" +
-                "come by any time.\"");
+        System.out.println(name + ": \"Suit yourself.\"");
     }
 
-    public void visitShop(){
-
+    public void visitShop(String name){
+        System.out.println(name + ": \"Welcome back. What will it be today?\"");
     }
 
     public void displayShopOptions(){
+        System.out.println("(What sort of items would you like to purchase?)");
         System.out.println("1. Weapons");
         System.out.println("2. Health Items");
         System.out.println("3. Stamina Items");
         System.out.println("4. Back");
     }
 
+    public void displayShopPotOptions(String small, int smallPrice, String medium, int mediumPrice, String big, int bigPrice, int playerMoney){
+        System.out.println("Your money: $" + playerMoney);
+        System.out.println("1. " + small +" - $" + smallPrice);
+        System.out.println("2. " + medium+" - $" + mediumPrice);
+        System.out.println("3. " + big+" - $" + bigPrice);
+        System.out.println("4. Back");
+    }
 
+    public void notEnoughMoney(){
+        System.out.println("You don't have enough money for this item.");
+    }
 
+    public void purchasedItem(String name){
+        System.out.println("You've purchased " + name +".");
+    }
 
     //////////////////////// COMBAT /////////////////////////////
     /////////////////////////////////////////////////////////////
@@ -213,6 +209,22 @@ public class gameView {
 
     public void enemyDied(String name){
         System.out.println(name +" falls to his death!");
+    }
+
+    public void displayPotionOptions(){
+        System.out.println("Items:");
+        System.out.println("1. Health");
+        System.out.println("2. Stamina");
+        System.out.println("3. Back");
+        System.out.println();
+    }
+
+    public void displaySpecificPotOptions(String small, String medium, String big){
+        System.out.println("1. " + small);
+        System.out.println("2. " + medium);
+        System.out.println("3. " + big);
+        System.out.println("4. Back");
+        System.out.println();
     }
 
     public void playerChoseSmallPotion(String name){

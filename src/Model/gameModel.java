@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class gameModel {
+    //  TOOLS
+    private boolean visitedShop = false;
+    private final int NO_MONEY = 0;
+
     // EMPTY HP AND STAMINA CHOOSER
     private final int NO_STAMINA = 0;
     private final int NO_HP = 0;
@@ -25,12 +29,12 @@ public class gameModel {
     private final int BIG_CHOICE = 2;
 
     // HEALTH POTS
-    private HealthPot hpSmall = new HealthPot("Elixir of Nurture", 20, 0);
-    private HealthPot hpMedium = new HealthPot("Elixir of Life", 45, 0);
-    private HealthPot hpBig = new HealthPot("Elixir of The Gods", 75, 0);
-    private StaminaPot staminaSmall = new StaminaPot("Energy Drink", 20, 0);
-    private StaminaPot staminaMedium = new StaminaPot("Adrenaline Acid", 50, 0);
-    private StaminaPot staminaBig = new StaminaPot("Liquid NITRO-9000", 100, 0);
+    private HealthPot hpSmall = new HealthPot("Elixir of Nurture", 20, 0, 20);
+    private HealthPot hpMedium = new HealthPot("Elixir of Life", 45, 0, 40);
+    private HealthPot hpBig = new HealthPot("Elixir of The Gods", 75, 0, 70);
+    private StaminaPot staminaSmall = new StaminaPot("Energy Drink", 20, 0, 20);
+    private StaminaPot staminaMedium = new StaminaPot("Adrenaline Acid", 50, 0, 40);
+    private StaminaPot staminaBig = new StaminaPot("Liquid NITRO-9000", 100, 0, 70);
 
     // MELEE WEAPONS
     private Weapon unarmed = new Melee("Fists", 10, 0,
@@ -259,5 +263,17 @@ public class gameModel {
 
     public List<Item> getPlayerHealthPotions() {
         return playerHealthPotions;
+    }
+
+    public boolean getVisitedShop() {
+        return visitedShop;
+    }
+
+    public void setVisitedShop(boolean visitedShop) {
+        this.visitedShop = visitedShop;
+    }
+
+    public int getNO_MONEY() {
+        return NO_MONEY;
     }
 }

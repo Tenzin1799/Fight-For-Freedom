@@ -127,10 +127,10 @@ public class gameView {
         System.out.println("3. Back");
     }
 
-    public void displayShopMeleeOptions(String wood,  String blade, String hammer, String energy,
+    public void displayShopSpecificCombatOptions(String wood,  String blade, String hammer, String energy,
                                         int woodPrice, int bladePrice, int hammerPrice, int energyPrice,
-                                        int playerMoney, String playerMeleeWeapon){
-        System.out.println("Your money: $" + playerMoney + " | Your melee weapon: " + playerMeleeWeapon);
+                                        int playerMoney, String playerMeleeWeapon, String weaponType){
+        System.out.println("Your money: $" + playerMoney + " | Your "+ weaponType +" weapon: " + playerMeleeWeapon);
         System.out.println("1. " + wood +" - $" + woodPrice);
         System.out.println("2. " + blade +" - $" + bladePrice);
         System.out.println("3. " + hammer +" - $" + hammerPrice);

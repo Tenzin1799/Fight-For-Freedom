@@ -140,24 +140,119 @@ public class gameController {
     public void purchaseMeleeItems(){
         boolean playerDoneBuying = false;
         while (!playerDoneBuying){
-            view.displayShopMeleeOptions(model.getWoodSword().getName(), model.getSteelSword().getName(),
+            view.displayShopSpecificCombatOptions(model.getWoodSword().getName(), model.getSteelSword().getName(),
                     model.getWarHammer().getName(), model.getEnergySword().getName(),
                     model.getWoodSword().getPrice(), model.getSteelSword().getPrice(),
                     model.getWarHammer().getPrice(), model.getEnergySword().getPrice(),
                     ((Player)model.getPlayer()).getMoney(),
-                    model.getPlayer().getWeapons().get(model.getMELEE_CHOICE()).getName());
+                    model.getPlayer().getWeapons().get(model.getMELEE_CHOICE()).getName(), "melee");
+            view.lineBreak();
             switch(getUserInputFiveOptions()){
                 case "1":
-                    // purchase
+                    if (((Player) model.getPlayer()).getMoney() > 
+                    model.getWoodSword().getPrice()){
+                        view.purchasedItem(model.getWoodSword().getName());
+                        model.getPlayer().getWeapons().set(model.getMELEE_CHOICE(), model.getWoodSword());
+                        ((Player) model.getPlayer()).setMoney(((Player) model.getPlayer()).getMoney()-
+                                model.getWoodSword().getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
                     break;
                 case "2":
-                    // purchase
+                    if (((Player) model.getPlayer()).getMoney() >
+                            model.getSteelSword().getPrice()){
+                        view.purchasedItem(model.getSteelSword().getName());
+                        model.getPlayer().getWeapons().set(model.getMELEE_CHOICE(), model.getSteelSword());
+                        ((Player) model.getPlayer()).setMoney(((Player) model.getPlayer()).getMoney()-
+                                model.getSteelSword().getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
                     break;
                 case "3":
-                    // purchase
+                    if (((Player) model.getPlayer()).getMoney() >
+                            model.getWarHammer().getPrice()){
+                        view.purchasedItem(model.getWarHammer().getName());
+                        model.getPlayer().getWeapons().set(model.getMELEE_CHOICE(), model.getWarHammer());
+                        ((Player) model.getPlayer()).setMoney(((Player) model.getPlayer()).getMoney()-
+                                model.getWarHammer().getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
                     break;
                 case "4":
-                    //purchase
+                    if (((Player) model.getPlayer()).getMoney() >
+                            model.getEnergySword().getPrice()){
+                        view.purchasedItem(model.getEnergySword().getName());
+                        model.getPlayer().getWeapons().set(model.getMELEE_CHOICE(), model.getEnergySword());
+                        ((Player) model.getPlayer()).setMoney(((Player) model.getPlayer()).getMoney()-
+                                model.getEnergySword().getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "5":
+                    view.backOption();
+                    playerDoneBuying = true;
+            }
+        }
+    }
+    
+    public void purchaseRangedItems(){
+        boolean playerDoneBuying = false;
+        while (!playerDoneBuying){
+            view.displayShopSpecificCombatOptions(model.getSlingShot().getName(), model.getPistol().getName(),
+                    model.getShotGun().getName(), model.getEnergyRifle().getName(),
+                    model.getSlingShot().getPrice(), model.getPistol().getPrice(),
+                    model.getShotGun().getPrice(), model.getEnergyRifle().getPrice(),
+                    ((Player)model.getPlayer()).getMoney(),
+                    model.getPlayer().getWeapons().get(model.getRANGED_CHOICE()).getName(), "ranged");
+            view.lineBreak();
+            switch(getUserInputFiveOptions()){
+                case "1":
+                    if (((Player) model.getPlayer()).getMoney() >
+                            model.getSlingShot().getPrice()){
+                        view.purchasedItem(model.getSlingShot().getName());
+                        model.getPlayer().getWeapons().set(model.getRANGED_CHOICE(), model.getSlingShot());
+                        ((Player) model.getPlayer()).setMoney(((Player) model.getPlayer()).getMoney()-
+                                model.getSlingShot().getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "2":
+                    if (((Player) model.getPlayer()).getMoney() >
+                            model.getPistol().getPrice()){
+                        view.purchasedItem(model.getPistol().getName());
+                        model.getPlayer().getWeapons().set(model.getRANGED_CHOICE(), model.getPistol());
+                        ((Player) model.getPlayer()).setMoney(((Player) model.getPlayer()).getMoney()-
+                                model.getPistol().getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "3":
+                    if (((Player) model.getPlayer()).getMoney() >
+                            model.getShotGun().getPrice()){
+                        view.purchasedItem(model.getShotGun().getName());
+                        model.getPlayer().getWeapons().set(model.getRANGED_CHOICE(), model.getShotGun());
+                        ((Player) model.getPlayer()).setMoney(((Player) model.getPlayer()).getMoney()-
+                                model.getShotGun().getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
+                    break;
+                case "4":
+                    if (((Player) model.getPlayer()).getMoney() >
+                            model.getEnergyRifle().getPrice()){
+                        view.purchasedItem(model.getEnergyRifle().getName());
+                        model.getPlayer().getWeapons().set(model.getRANGED_CHOICE(), model.getEnergyRifle());
+                        ((Player) model.getPlayer()).setMoney(((Player) model.getPlayer()).getMoney()-
+                                model.getEnergyRifle().getPrice());
+                    } else {
+                        view.notEnoughMoney();
+                    }
                     break;
                 case "5":
                     view.backOption();
@@ -170,6 +265,7 @@ public class gameController {
         boolean playerDoneBuying = false;
         while(!playerDoneBuying){
             view.displayShopCombatOptions();
+            view.lineBreak();
             switch (getUserInputThreeOptions()){
                 case "1":
                     //melee
@@ -177,6 +273,7 @@ public class gameController {
                     break;
                 case "2":
                     // ranged
+                    purchaseRangedItems();
                     break;
                 case "3":
                     // back

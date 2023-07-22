@@ -30,22 +30,24 @@ public class gameController {
         boolean moreGame = true;    // set to false at the end of game
         boolean playerAlive = true;    // set to false if player dies
         boolean playAgain = true;   // set to false is player doesn't want to play again
-        int counter = 1;
-        while (playAgain) {
-            while (moreGame && playerAlive) {
-                System.out.println("Fight " + counter);
-                playerAlive = combat(model.getPlayer(), model.getNPC());
-                counter++;
+        boolean keepPlaying = true;
+        while (playAgain  && keepPlaying) {
+            while (moreGame && playerAlive && keepPlaying) {
+                keepPlaying = introToGame();
+
+//                playerAlive = combat(model.getPlayer(), model.getNPC());
             }
-            view.displayPlayAgain();
-            view.lineBreak();
-            switch(getUserInputTwoOptions()){
-                case "1":
-                    moreGame = true;
-                    playerAlive = true;
-                    break;
-                case "2":
-                    playAgain = false;
+            if (keepPlaying){
+                view.displayPlayAgain();
+                view.lineBreak();
+                switch(getUserInputTwoOptions()){
+                    case "1":
+                        moreGame = true;
+                        playerAlive = true;
+                        break;
+                    case "2":
+                        playAgain = false;
+                }
             }
         }
 
@@ -53,6 +55,22 @@ public class gameController {
 
 //        shop(model.getVisitedShop());                    // SHOP METHOD
 //        combat(model.getPlayer(), model.getNPC());       // COMBAT METHOD
+    }
+
+    public boolean introToGame(){
+        view.gameStartLogo();
+        view.lineBreak();
+        next_input_lineBreak();
+        view.beginGameIntro();
+        view.displayKeepPlaying();
+        view.lineBreak();
+        switch (getUserInputTwoOptions()){
+            case "1":
+                return true;
+            case "2":
+                return false;
+        }
+        return false;
     }
 
     public void shop(boolean visited){

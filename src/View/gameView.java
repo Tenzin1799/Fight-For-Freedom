@@ -4,6 +4,21 @@ public class gameView {
 
     //////////////////////// TOOLS ///////////////////////////////
     /////////////////////////////////////////////////////////////
+
+    public void gameStartLogo(){
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||  FIGHT FOR FREEDOM  |||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+    }
+
     public void lineBreak(){
         System.out.println();
     }
@@ -37,6 +52,31 @@ public class gameView {
         System.out.println("Would you like to play again?");
         System.out.println("1. Yes");
         System.out.println("2. No");
+    }
+
+    public void displayKeepPlaying(){
+        System.out.println("Would you like to keep playing?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+    }
+
+    //////////////////  Initial Set Up  /////////////////////////
+
+    public void beginGameIntro(){
+        System.out.println("This game is completely fictional. Any resemblance to real people or events\n" +
+                "are purely coincidental. This game also includes violence and obscene language.\n" +
+                "If you feel uncomfortable with the mentioned material, please end the game now.");
+
+    }
+
+    public void getUserPlayerName(){
+        System.out.println("Wha");
+    }
+
+    ////////////////////// CHAPTER 1 ////////////////////////////
+    /////////////////////////////////////////////////////////////
+
+    public void chapterOneIntro() {
     }
 
     //////////////////////// SHOP ///////////////////////////////

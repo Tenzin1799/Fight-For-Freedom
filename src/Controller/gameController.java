@@ -33,12 +33,14 @@ public class gameController {
     }
 
     public void shop(boolean visited){
-        if (visited){
+        if (!visited){
             visitShopFirstTime();
             model.setVisitedShop(true);
         }
-        view.visitShop(model.getShopKeeper().getName());
-        purchaseItems();
+        else {
+            view.visitShop(model.getShopKeeper().getName());
+            purchaseItems();
+        }
     }
 
     public void displayMelee(){
@@ -319,23 +321,17 @@ public class gameController {
             case "1":
                 view.bigDivider();
                 view.visitShopFirstTime3_1(model.getShopKeeper().getName());
-                view.displayShopOptions();
-                view.lineBreak();
-                getUserInputFourOptions();
+                purchaseItems();
                 break;
             case "2":
                 view.bigDivider();
                 view.visitShopFirstTime3_2(model.getShopKeeper().getName());
-                view.displayShopOptions();
-                view.lineBreak();
-                getUserInputFourOptions();
+                purchaseItems();
                 break;
             case "3":
                 view.bigDivider();
                 view.visitShopFirstTime3_3(model.getShopKeeper().getName());
-                view.displayShopOptions();
-                view.lineBreak();
-                getUserInputFourOptions();
+                purchaseItems();
                 break;
             case "4":
                 view.bigDivider();

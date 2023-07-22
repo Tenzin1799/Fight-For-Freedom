@@ -57,7 +57,7 @@ public class gameView {
         System.out.println("1. \"Uh... Hello. I wanted to see what items you were selling.\"");
         System.out.println("2. \"Yes. Sorry... What are you?\"");
         System.out.println("3. \"How the hell- Where is your mouth- HOW ARE YOU SPEAKING IN MY MIND!??\"");
-        System.out.println("4. \"On second thought. I think I'm okay.\"");
+        System.out.println("4. \"On second thought. I think I'm okay. (Leave)\"");
     }
 
     public void visitShopFirstTime3_1(String name){
@@ -100,7 +100,7 @@ public class gameView {
         System.out.println("1. Weapons");
         System.out.println("2. Health Items");
         System.out.println("3. Stamina Items");
-        System.out.println("4. Back");
+        System.out.println("4. Leave");
     }
 
     public void displayShopPotOptions(String small, int smallPrice, String medium, int mediumPrice, String big, int bigPrice, int playerMoney){

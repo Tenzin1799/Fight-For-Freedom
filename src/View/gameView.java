@@ -33,6 +33,12 @@ public class gameView {
         System.out.print("(Hit Enter to continue)");
     }
 
+    public void displayPlayAgain(){
+        System.out.println("Would you like to play again?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+    }
+
     //////////////////////// SHOP ///////////////////////////////
     /////////////////////////////////////////////////////////////
     public void visitShopFirstTime(){
@@ -264,6 +270,10 @@ public class gameView {
 
     public void displayTaunt(){
         System.out.println("you: \"That's all you got??\"");
+    }
+
+    public void playerDeath(){
+        System.out.println("You've died!");
     }
 
 }

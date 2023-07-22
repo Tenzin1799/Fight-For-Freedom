@@ -27,9 +27,32 @@ public class gameController {
         model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaMedium());
         model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaBig());
         model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).addAmount();
+        boolean moreGame = true;    // set to false at the end of game
+        boolean playerAlive = true;    // set to false if player dies
+        boolean playAgain = true;   // set to false is player doesn't want to play again
+        int counter = 1;
+        while (playAgain) {
+            while (moreGame && playerAlive) {
+                System.out.println("Fight " + counter);
+                playerAlive = combat(model.getPlayer(), model.getNPC());
+                counter++;
+            }
+            view.displayPlayAgain();
+            view.lineBreak();
+            switch(getUserInputTwoOptions()){
+                case "1":
+                    moreGame = true;
+                    playerAlive = true;
+                    break;
+                case "2":
+                    playAgain = false;
+            }
+        }
 
-        shop(model.getVisitedShop());
-//        combat(model.getPlayer(), model.getNPC());
+
+
+//        shop(model.getVisitedShop());                    // SHOP METHOD
+//        combat(model.getPlayer(), model.getNPC());       // COMBAT METHOD
     }
 
     public void shop(boolean visited){
@@ -43,9 +66,6 @@ public class gameController {
         }
     }
 
-    public void displayMelee(){
-
-    }
 
     public void purchaseHealthItem(){
         boolean playerDoneBuying = false;
@@ -287,7 +307,7 @@ public class gameController {
 
     public void purchaseItems(){
         boolean playerDoneBuying = false;
-        while (!playerDoneBuying) {
+        while (!playerDoneBuying){
             view.displayShopOptions();
             view.lineBreak();
             switch (getUserInputFourOptions()) {
@@ -306,7 +326,6 @@ public class gameController {
             }
         }
     }
-
 
     public void visitShopFirstTime(){
         view.visitShopFirstTime();
@@ -339,8 +358,7 @@ public class gameController {
         }
     }
 
-
-    public void combat(Fighter p1, Fighter npc){
+    public Boolean combat(Fighter p1, Fighter npc){
         npc.getWeapons().add(model.getWoodSword());
         npc.getWeapons().add(model.getPistol());
         view.beginCombatDialogue(p1.getName(), npc.getName());
@@ -359,7 +377,19 @@ public class gameController {
             // Setting HP and Stamina to full after winning a fight
             p1.setHP(model.getFullHP());
             p1.setStamina(model.getFullStamina());
+            npc.setHP(100); // setting npc hp to 100 for testing
         }
+        if (p1.getHP() <= model.getNoHP()){
+            // Setting HP and Stamina to full after losing a fight
+            p1.setHP(model.getFullHP());
+            p1.setStamina(model.getFullStamina());
+            npc.setHP(100);
+            view.playerDeath();
+            // returns that player died
+            return false;
+        }
+        //returns that player is alive
+        return true;
     }
 
     public void playerAttack(Fighter p1, Fighter npc){
@@ -648,6 +678,22 @@ public class gameController {
             if (input.equals("1") ||
                     input.equals("2")||
                     input.equals("3")){
+                validInput = true;
+            } else {
+                view.invalidInput();
+            }
+        }
+        return input;
+    }
+
+    public String getUserInputTwoOptions(){
+        boolean validInput = false;
+        String input = "";
+        while (!validInput){
+            view.userEnter();
+            input = kb.nextLine();
+            if (input.equals("1") ||
+                    input.equals("2")){
                 validInput = true;
             } else {
                 view.invalidInput();

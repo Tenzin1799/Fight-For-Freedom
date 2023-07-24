@@ -65,12 +65,21 @@ public class gameView {
     public void beginGameIntro(){
         System.out.println("This game is completely fictional. Any resemblance to real people or events\n" +
                 "are purely coincidental. This game also includes violence and obscene language.\n" +
-                "If you feel uncomfortable with the mentioned material, please end the game now.");
+                "If you do not wish to continue, please end the game now.");
+    }
 
+    public void setUpGame(){
+        System.out.println("First, lets get some information for your character!");
     }
 
     public void getUserPlayerName(){
-        System.out.println("Wha");
+        System.out.print("What's your character's name?: ");
+    }
+
+    public void nameCorrect(String name){
+        System.out.println("Alright, " + name +". Does that look right?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
     }
 
     ////////////////////// CHAPTER 1 ////////////////////////////

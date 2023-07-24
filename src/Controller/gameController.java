@@ -15,27 +15,18 @@ public class gameController {
 
 
     public void startGame(){
-        model.getPlayer().getWeapons().add(model.getUnarmed());
-        model.getPlayer().getWeapons().add(model.getRocks());
-        model.getPlayer().getInventory().add(model.getPlayerHealthPotions());
-        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpSmall());
-//       model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getSMALL_CHOICE()).addAmount();
-        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpMedium());
-        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpBig());
-        model.getPlayer().getInventory().add(model.getPlayerStaminaPotions());
-        model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaSmall());
-        model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaMedium());
-        model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaBig());
-        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).addAmount();
+        gameStarter();
         boolean moreGame = true;    // set to false at the end of game
         boolean playerAlive = true;    // set to false if player dies
         boolean playAgain = true;   // set to false is player doesn't want to play again
-        boolean keepPlaying = true;
+        boolean keepPlaying = true; // set to false if user does not wish to continue playing after discretion
         while (playAgain  && keepPlaying) {
             while (moreGame && playerAlive && keepPlaying) {
                 keepPlaying = introToGame();
+                preGame();
 
 //                playerAlive = combat(model.getPlayer(), model.getNPC());
+                moreGame = false;
             }
             if (keepPlaying){
                 view.displayPlayAgain();
@@ -57,6 +48,20 @@ public class gameController {
 //        combat(model.getPlayer(), model.getNPC());       // COMBAT METHOD
     }
 
+    public void gameStarter(){
+        model.getPlayer().getWeapons().add(model.getUnarmed());
+        model.getPlayer().getWeapons().add(model.getRocks());
+        model.getPlayer().getInventory().add(model.getPlayerHealthPotions());
+        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpSmall());
+        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpMedium());
+        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).add(model.getHpBig());
+        model.getPlayer().getInventory().add(model.getPlayerStaminaPotions());
+        model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaSmall());
+        model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaMedium());
+        model.getPlayer().getInventory().get(model.getSTAMINA_POT_CHOICE()).add(model.getStaminaBig());
+        model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).addAmount();
+    }
+
     public boolean introToGame(){
         view.gameStartLogo();
         view.lineBreak();
@@ -71,6 +76,26 @@ public class gameController {
                 return false;
         }
         return false;
+    }
+
+    public void preGame(){
+        view.bigDivider();
+        view.setUpGame();
+        boolean nameCorrect = false;
+        while (!nameCorrect) {
+            view.getUserPlayerName();
+            model.getPlayer().setName(kb.nextLine());
+            view.lineBreak();
+            view.nameCorrect(model.getPlayer().getName());
+            view.lineBreak();
+            switch(getUserInputTwoOptions()){
+                case "1":
+                    nameCorrect = true;
+                    break;
+                case "2":
+                    nameCorrect = false;
+            }
+        }
     }
 
     public void shop(boolean visited){
@@ -395,13 +420,13 @@ public class gameController {
             // Setting HP and Stamina to full after winning a fight
             p1.setHP(model.getFullHP());
             p1.setStamina(model.getFullStamina());
-            npc.setHP(100); // setting npc hp to 100 for testing
+            npc.setHP(model.getFullHP()); // setting npc hp to 100 for testing
         }
         if (p1.getHP() <= model.getNoHP()){
             // Setting HP and Stamina to full after losing a fight
             p1.setHP(model.getFullHP());
             p1.setStamina(model.getFullStamina());
-            npc.setHP(100);
+            npc.setHP(model.getFullHP());
             view.playerDeath();
             // returns that player died
             return false;

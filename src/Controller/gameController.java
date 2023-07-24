@@ -22,8 +22,8 @@ public class gameController {
         boolean keepPlaying = true; // set to false if user does not wish to continue playing after discretion
         while (playAgain  && keepPlaying) {
             while (moreGame && playerAlive && keepPlaying) {
-                keepPlaying = introToGame();
-                preGame();
+//                keepPlaying = introToGame();
+//                preGame();
                 chapterOne();
 
 //                playerAlive = combat(model.getPlayer(), model.getNPC());
@@ -88,14 +88,49 @@ public class gameController {
     }
 
     public void chapterOne(){
+        view.chapterOneLogo();
+        view.lineBreak();
+        next_input_lineBreak();
         view.chapterOne_1();
         view.lineBreak();
         switch(getUserInputTwoOptions()){
             case "1":
-                System.out.println("Fix lock");
+                view.bigDivider();
+                view.chapterOne_1_1();
+                view.lineBreak();
+                next_input_lineBreak();
+                view.chapterOne_1_1_1();
+                view.lineBreak();
+                chapterOne_1_1_1();
                 break;
             case "2":
+                view.bigDivider();
                 System.out.println("Dont fix");
+        }
+    }
+
+    public void chapterOne_1_1_1(){
+        switch(getUserInputThreeOptions()){
+            case "1":
+                view.bigDivider();
+                view.chapterOne_1_1_1_1();
+                view.chapterOneRevealKroblag();
+                break;
+            case "2":
+                view.bigDivider();
+                view.chapterOne_1_1_1_2();
+                view.lineBreak();
+                switch(getUserInputTwoOptions()){
+                    case "1":
+                        view.chapterOneRevealKroblag();
+                        break;
+                    case "2":
+                        // dont open for landlord
+                }
+                break;
+            case "3":
+                view.bigDivider();
+                view.chapterOne_1_1_1_3();
         }
     }
 

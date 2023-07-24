@@ -69,7 +69,7 @@ public class gameView {
     }
 
     public void setUpGame(){
-        System.out.println("First, lets get some information for your character!");
+        System.out.println("All we need before you get started is the name for your character.");
     }
 
     public void getUserPlayerName(){
@@ -85,6 +85,20 @@ public class gameView {
     ////////////////////// CHAPTER 1 ////////////////////////////
     /////////////////////////////////////////////////////////////
 
+    public void chapterOneLogo(){
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("|||||||||||||||||||||  CHAPTER ONE  ||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+    }
+
     public void chapterOne_1() {
         System.out.println("The lock clicks as you turn the switch on the steel deadbolt \n" +
                 "loosely screwed onto the door behind you. You really need to tighten those screws soon,\n" +
@@ -99,6 +113,55 @@ public class gameView {
         System.out.println("1. Yes");
         System.out.println("2. No");
     }
+
+    public void chapterOne_1_1(){
+        System.out.println("Wow. Took that blue collar man comment to heart, didn’t you? \n" +
+                "You dig through the toolbox you keep in the closet to find the right \n" +
+                "screwdriver for the job. Once you’re able to locate one, you get to work. \n" +
+                "While tightening the screws on the deadbolt, you can’t help but wonder \n" +
+                "what life would have been like if you had listened to your parents and \n" +
+                "studied engineering during your college days. Maybe you would’ve bought a \n" +
+                "house by now. Or maybe a Tesla. Maybe you’d even have a girlfriend… or boyfriend? \n" +
+                "Doesn’t matter now. You just need to worry about how you’re planning on \n" +
+                "keeping the lights on for the next month. ");
+    }
+
+    public void chapterOne_1_1_1(){
+        System.out.println("Just as you finish tightening the screws, you hear a knock at the door.");
+        System.out.println("(What do you do?)");
+        System.out.println("1. Open the door");
+        System.out.println("2. \"Who is it?\"" );
+        System.out.println("3. Ignore it. It's time to go take a shower.");
+    }
+
+    public void chapterOne_1_1_1_1(){
+        System.out.println("You open the door without asking for identity. \n" +
+                "What’s the point of having a lock if you’re just going to open it for anyone who knocks?");
+        // reveal of kroblag
+    }
+
+    public void chapterOneRevealKroblag(){
+        System.out.println("Standing in front of you is a tall creature. Chunky. \n" +
+                "Green skin covered in scales. Yellow eyes with slits for it’s iris. \n" +
+                "It’s clearly not human. It grins down at you. You notice it holds \n" +
+                "some sort of device in it’s hand. Then the next thing you notice is your vision fading.");
+    }
+
+    public void chapterOne_1_1_1_2(){
+        System.out.println("???: \"Your landlord.\"");
+        System.out.println("(What do you do?)");
+        System.out.println("1. Open the door");
+        System.out.println("2. Ignore it. Fuck that guy.");
+    }
+
+    public void chapterOne_1_1_1_3(){
+        System.out.println("You turn away from the door. If they really needed to get a hold of you, \n" +
+                "they’d leave a note. Just as you begin walking away, the door bursts open. \n" +
+                "Before you can react you are forced onto the floor. You hear a beep as \n" +
+                "your attacker keeps you pinned down. Your vision fades as you drift into a slumber.");
+        System.out.println("???: \"Where do you think you're going? You hairless monkey.\"");
+    }
+
 
     //////////////////////// SHOP ///////////////////////////////
     /////////////////////////////////////////////////////////////

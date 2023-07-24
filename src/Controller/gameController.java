@@ -112,23 +112,30 @@ public class gameController {
     public void chapterOne_1_1_1(){
         switch(getUserInputThreeOptions()){
             case "1":
+                // open door right away
                 view.bigDivider();
                 view.chapterOne_1_1_1_1();
                 view.chapterOneRevealKroblag();
                 break;
             case "2":
+                // ask who it is
                 view.bigDivider();
                 view.chapterOne_1_1_1_2();
                 view.lineBreak();
                 switch(getUserInputTwoOptions()){
                     case "1":
+                        // open for 'landlord'
+                        view.bigDivider();
                         view.chapterOneRevealKroblag();
                         break;
                     case "2":
-                        // dont open for landlord
+                        // dont open for 'landlord'
+                        view.bigDivider();
+                        view.chapterOne_1_1_1_3();
                 }
                 break;
             case "3":
+                // dont open for stranger
                 view.bigDivider();
                 view.chapterOne_1_1_1_3();
         }

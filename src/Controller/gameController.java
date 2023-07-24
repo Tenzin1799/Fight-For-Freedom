@@ -24,6 +24,7 @@ public class gameController {
             while (moreGame && playerAlive && keepPlaying) {
                 keepPlaying = introToGame();
                 preGame();
+                chapterOne();
 
 //                playerAlive = combat(model.getPlayer(), model.getNPC());
                 moreGame = false;
@@ -78,11 +79,24 @@ public class gameController {
         return false;
     }
 
-    public void preGame() {
+    public void preGame(){
         view.bigDivider();
         view.setUpGame();
         getUsersName();
         view.bigDivider();
+
+    }
+
+    public void chapterOne(){
+        view.chapterOne_1();
+        view.lineBreak();
+        switch(getUserInputTwoOptions()){
+            case "1":
+                System.out.println("Fix lock");
+                break;
+            case "2":
+                System.out.println("Dont fix");
+        }
     }
 
     public void getUsersName(){

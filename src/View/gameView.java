@@ -85,7 +85,19 @@ public class gameView {
     ////////////////////// CHAPTER 1 ////////////////////////////
     /////////////////////////////////////////////////////////////
 
-    public void chapterOneIntro() {
+    public void chapterOne_1() {
+        System.out.println("The lock clicks as you turn the switch on the steel deadbolt \n" +
+                "loosely screwed onto the door behind you. You really need to tighten those screws soon,\n" +
+                "or you won’t have a lock for much longer. How else are you going to keep your \n" +
+                "shitty one-bedroom apartment secure if not for that lonely metal lock? \n" +
+                "Maybe you can do it tomorrow though. You’re exhausted after your long shift. \n" +
+                "Eight hours of fake smiling and pretend happiness while you serve food at the \n" +
+                "restaurant you work at, and it feels like you’re a proper blue collar man. \n" +
+                "You’d be screwed if you actually did work in manual labor. Definitely not \n" +
+                "lasting eight hours if you’re this tired from just serving food.");
+        System.out.println("(Do you tighten the screws?)");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
     }
 
     //////////////////////// SHOP ///////////////////////////////

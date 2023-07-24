@@ -78,9 +78,14 @@ public class gameController {
         return false;
     }
 
-    public void preGame(){
+    public void preGame() {
         view.bigDivider();
         view.setUpGame();
+        getUsersName();
+        view.bigDivider();
+    }
+
+    public void getUsersName(){
         boolean nameCorrect = false;
         while (!nameCorrect) {
             view.getUserPlayerName();

@@ -114,7 +114,9 @@ public class gameView {
         System.out.println("2. No");
     }
 
-    public void chapterOne_1_1(){
+
+    // TIGHTENED SCREWS
+    public void playerTightenedScrews_Ch1(){
         System.out.println("Wow. Took that blue collar man comment to heart, didn’t you? \n" +
                 "You dig through the toolbox you keep in the closet to find the right \n" +
                 "screwdriver for the job. Once you’re able to locate one, you get to work. \n" +
@@ -122,11 +124,11 @@ public class gameView {
                 "what life would have been like if you had listened to your parents and \n" +
                 "studied engineering during your college days. Maybe you would’ve bought a \n" +
                 "house by now. Or maybe a Tesla. Maybe you’d even have a girlfriend… or boyfriend? \n" +
-                "Doesn’t matter now. You just need to worry about how you’re planning on \n" +
+                "Doesn't matter now. You just need to worry about how you’re planning on \n" +
                 "keeping the lights on for the next month. ");
     }
 
-    public void chapterOne_1_1_1(){
+    public void knockAtDoor_Ch1(){
         System.out.println("Just as you finish tightening the screws, you hear a knock at the door.");
         System.out.println("(What do you do?)");
         System.out.println("1. Open the door");
@@ -134,10 +136,9 @@ public class gameView {
         System.out.println("3. Ignore it. It's time to go take a shower.");
     }
 
-    public void chapterOne_1_1_1_1(){
+    public void playerOpensDoorRightAway_Ch1(){
         System.out.println("You open the door without asking for identity. \n" +
                 "What’s the point of having a lock if you’re just going to open it for anyone who knocks?");
-        // reveal of kroblag
     }
 
     public void chapterOneRevealKroblag(){
@@ -147,19 +148,93 @@ public class gameView {
                 "some sort of device in it’s hand. Then the next thing you notice is your vision fading.");
     }
 
-    public void chapterOne_1_1_1_2(){
+    public void playerAsksForIdentity_Ch1(){
         System.out.println("???: \"Your landlord.\"");
         System.out.println("(What do you do?)");
         System.out.println("1. Open the door");
-        System.out.println("2. Ignore it. Fuck that guy.");
+        System.out.println("2. Ignore it. Screw that guy.");
     }
 
-    public void chapterOne_1_1_1_3(){
+    public void playerDoesNotOpenDoor_Ch1(){
         System.out.println("You turn away from the door. If they really needed to get a hold of you, \n" +
                 "they’d leave a note. Just as you begin walking away, the door bursts open. \n" +
                 "Before you can react you are forced onto the floor. You hear a beep as \n" +
                 "your attacker keeps you pinned down. Your vision fades as you drift into a slumber.");
         System.out.println("???: \"Where do you think you're going? You hairless monkey.\"");
+    }
+
+    //DIDN'T TIGHTEN SCREWS
+    public void playerDoesNotTightenScrews_Ch1(){
+        System.out.println("Figures. You undress in the bathroom, tossing your clothes \n" +
+                "into the hamper just outside the door. \n" +
+                "The shower starts cold but warms up after a minute or two. Not ideal, \n" +
+                "but at least you get hot water. It’s little things in life that matters.\n" +
+                "It’s not all about the fancy cars or the hot dates. At least that’s what people say. \n" +
+                "Except when you’re on the sigma male side of TookTook. Or maybe it's alpha male?");
+    }
+
+    public void kroblagSneaksIn_Ch1(){
+        System.out.println("Unfortunately, your decision to leave the loose lock project \n" +
+                "for tomorrow has a price. While you’re enjoying the warm embrace of water \n" +
+                "in the shower, the front door is slowly opened. Turns out the deadbolt was \n" +
+                "one shimmy away from falling off. ");
+        System.out.println("???: \"Hue hue.. This might be easier than I thought.\"");
+    }
+
+    public void playerSeesKroblagInShower_Ch1(){
+        System.out.println("As you wash the fruit scented conditioner \n" +
+                "out of your hair, you notice a shadow grow onto the shower curtains. \n" +
+                "Blocking more and more light from the yellow tinted bulb until the shadow \n" +
+                "takes over the entire curtain. Looking up you see a chunky green face \n" +
+                "covered in scales, yellow eyes with a slit for an iris.");
+        System.out.println("???: \"Yes... You'll do perfectly...\"");
+        System.out.println("(What do you do?)");
+        System.out.println("1. SCREAM. THERES A MONSTER RIGHT IN FRONT OF YOU.");
+        System.out.println("2. \"Hello.\"");
+        System.out.println("3. Shove the creepy bastard.");
+        System.out.println("4. Slap yourself. You're clearly daydreaming.");
+    }
+
+    public void screamSeeingKroblag_Ch1(){
+        System.out.println("???: \"Screaming won't help you! Gah! I'll just have to bet \n" +
+                "against you in the arena.\"");
+    }
+
+    public void playerSaysHelloToKroblag_Ch1(){
+        System.out.println("???: \"Greetings... Odd, normally they do something rash by now. My name is \n" +
+                "Kroblag Maog. I am a slaver from a planet far from here. I like to call myself a \n" +
+                "business man. I am taking you as a slave. It's not as bad as it seems. \n" +
+                "All you need to do is fight in a six round tournament. When you win, I will let you go.\n" +
+                "You will have your own room. I will keep you fed. I will even split part \n" +
+                "of the earnings you win from every match with you, that way you can enjoy yourself \n" +
+                "in the city during your time between matches. If you decide not to fight, \n" +
+                "you'll die. Whether you like it or not, the tournament continues. Trust me, \n" +
+                "your opponent would rather you lay there defenselessly anyways.\"");
+    }
+
+    public void shoveKroblag_Ch1(){
+        System.out.println("With the shower curtain covering half of your body, \n" +
+                "the creature didn’t realize where your hands were. You drive your \n" +
+                "weight forward and push forward with all of your strength. \n" +
+                "Shoving the big monster back, causing it to stumble and fall onto the floor. \n" +
+                "The soapy floor causes your feet to slip out from under you. \n" +
+                "The curtain is ripped from the metal pole it hung from, crashing down on top of you, \n" +
+                "blinding you. You hear a beep, followed by a whirring noise as the creature \n" +
+                "begins to move. You try to move but for some reason, you can’t. \n" +
+                "Your vision begins to fade, and with it so does your ability to stay awake.\n" +
+                "???: \"You little... At least you got some fight in you.\"");
+    }
+
+    public void playerSlapsSelf_Ch1(){
+        System.out.println("???: \"What the? Ah. A stupid one. Alright, let's just hope you're \n" +
+                "strong too. The crowd loves a dumb brute.\"");
+    }
+
+    public void kroblagPlayerToSleep_Ch1(){
+        System.out.println("You hear the sound of a beep, followed by a whir.");
+        System.out.println("???: \"Alright now... go to sleep.\"");
+        System.out.println("Your vision fades to darkness, shadows tunnelling \n" +
+                "inwards until you are sound asleep.");
     }
 
 

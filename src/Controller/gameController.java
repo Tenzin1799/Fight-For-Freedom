@@ -14,25 +14,24 @@ public class gameController {
     private gameView view = new gameView();
 
 
-    public void startGame(){
+    public void startGame() {
         gameStarter();
         boolean moreGame = true;    // set to false at the end of game
         boolean playerAlive = true;    // set to false if player dies
         boolean playAgain = true;   // set to false is player doesn't want to play again
         boolean keepPlaying = true; // set to false if user does not wish to continue playing after discretion
-        while (playAgain  && keepPlaying) {
-            while (moreGame && playerAlive && keepPlaying) {
-//                keepPlaying = introToGame();
-//                preGame();
-                chapterOne();
+//        keepPlaying = introToGame();
+        if (keepPlaying) {
+            while (playAgain) {
+                while (moreGame && playerAlive) {
+//                    preGame();
+                    chapterOne();
 
-//                playerAlive = combat(model.getPlayer(), model.getNPC());
-                moreGame = false;
-            }
-            if (keepPlaying){
+                    moreGame = false;
+                }
                 view.displayPlayAgain();
                 view.lineBreak();
-                switch(getUserInputTwoOptions()){
+                switch (getUserInputTwoOptions()){
                     case "1":
                         moreGame = true;
                         playerAlive = true;
@@ -42,13 +41,13 @@ public class gameController {
                 }
             }
         }
-
-
-
 //        shop(model.getVisitedShop());                    // SHOP METHOD
 //        combat(model.getPlayer(), model.getNPC());       // COMBAT METHOD
+//        playerAlive = combat(model.getPlayer(), model.getNPC());  // example combat
+
     }
 
+    // probably will change this, but for now it just loads the player with empty inventory and base weapons
     public void gameStarter(){
         model.getPlayer().getWeapons().add(model.getUnarmed());
         model.getPlayer().getWeapons().add(model.getRocks());
@@ -63,6 +62,7 @@ public class gameController {
         model.getPlayer().getInventory().get(model.getHEALTH_POT_CHOICE()).get(model.getMEDIUM_CHOICE()).addAmount();
     }
 
+    // Returns true if player wants to play after discretion is advised, if false, game is ended.
     public boolean introToGame(){
         view.gameStartLogo();
         view.lineBreak();
@@ -79,13 +79,15 @@ public class gameController {
         return false;
     }
 
+
+    // just gets users name
     public void preGame(){
         view.bigDivider();
         view.setUpGame();
         getUsersName();
         view.bigDivider();
-
     }
+
 
     public void chapterOne(){
         view.chapterOneLogo();
@@ -93,34 +95,76 @@ public class gameController {
         next_input_lineBreak();
         view.chapterOne_1();
         view.lineBreak();
+        tightenTheScrewChoice_Ch1();
+    }
+
+    public void tightenTheScrewChoice_Ch1(){
         switch(getUserInputTwoOptions()){
             case "1":
+                //tightens the screw
                 view.bigDivider();
-                view.chapterOne_1_1();
+                view.playerTightenedScrews_Ch1();
                 view.lineBreak();
                 next_input_lineBreak();
-                view.chapterOne_1_1_1();
+                view.bigDivider();
+                view.knockAtDoor_Ch1();
                 view.lineBreak();
-                chapterOne_1_1_1();
+                openDoorChoice_Ch1();
+                view.lineBreak();
                 break;
             case "2":
+                //doesn't tighten the screw
                 view.bigDivider();
-                System.out.println("Dont fix");
+                view.playerDoesNotTightenScrews_Ch1();
+                view.lineBreak();
+                next_input_lineBreak();
+                view.bigDivider();
+                view.kroblagSneaksIn_Ch1();
+                view.lineBreak();
+                next_input_lineBreak();
+                view.bigDivider();
+                view.playerSeesKroblagInShower_Ch1();
+                view.lineBreak();
+                kroblagSneaksInShowerChoice_Ch1();
+                view.lineBreak();
+                next_input_lineBreak();
         }
     }
 
-    public void chapterOne_1_1_1(){
+    public void kroblagSneaksInShowerChoice_Ch1(){
+        switch(getUserInputFourOptions()){
+            case "1":
+                view.bigDivider();
+                view.screamSeeingKroblag_Ch1();
+                view.kroblagPlayerToSleep_Ch1();
+                break;
+            case "2":
+                view.bigDivider();
+                view.playerSaysHelloToKroblag_Ch1();
+                break;
+            case "3":
+                view.bigDivider();
+                view.shoveKroblag_Ch1();
+                break;
+            case "4":
+                view.bigDivider();
+                view.playerSlapsSelf_Ch1();
+                view.kroblagPlayerToSleep_Ch1();
+        }
+    }
+
+    public void openDoorChoice_Ch1(){
         switch(getUserInputThreeOptions()){
             case "1":
                 // open door right away
                 view.bigDivider();
-                view.chapterOne_1_1_1_1();
+                view.playerOpensDoorRightAway_Ch1();
                 view.chapterOneRevealKroblag();
                 break;
             case "2":
                 // ask who it is
                 view.bigDivider();
-                view.chapterOne_1_1_1_2();
+                view.playerAsksForIdentity_Ch1();
                 view.lineBreak();
                 switch(getUserInputTwoOptions()){
                     case "1":
@@ -131,13 +175,13 @@ public class gameController {
                     case "2":
                         // dont open for 'landlord'
                         view.bigDivider();
-                        view.chapterOne_1_1_1_3();
+                        view.playerDoesNotOpenDoor_Ch1();
                 }
                 break;
             case "3":
                 // dont open for stranger
                 view.bigDivider();
-                view.chapterOne_1_1_1_3();
+                view.playerDoesNotOpenDoor_Ch1();
         }
     }
 
@@ -169,7 +213,6 @@ public class gameController {
             purchaseItems();
         }
     }
-
 
     public void purchaseHealthItem(){
         boolean playerDoneBuying = false;

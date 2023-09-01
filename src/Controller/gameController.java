@@ -20,11 +20,11 @@ public class gameController {
         boolean playerAlive = true;    // set to false if player dies
         boolean playAgain = true;   // set to false is player doesn't want to play again
         boolean keepPlaying = true; // set to false if user does not wish to continue playing after discretion
-//        keepPlaying = introToGame();
+        keepPlaying = introToGame();
         if (keepPlaying) {
             while (playAgain) {
                 while (moreGame && playerAlive) {
-//                    preGame();
+                    preGame();
                     chapterOne();
 
                     moreGame = false;
@@ -196,7 +196,21 @@ public class gameController {
         view.responseToKroblagIntroduction();
         view.lineBreak();
         responseToKroblagIntroduction();
+        view.lineBreak();
         next_input_lineBreak();
+        view.preAnnouncerIntroduction();
+        next_input_lineBreak();
+        view.announcerIntroduction();
+        view.lineBreak();
+        next_input_lineBreak();
+        view.announcerBeginMatch();
+        next_input_lineBreak();
+        view.firstMatchBegin();
+        next_input_lineBreak();
+        firstFight();
+    }
+    public void firstFight(){
+        combat(model.getPlayer(), model.getTestNPC());
     }
 
     public void responseToKroblagIntroduction(){

@@ -231,10 +231,9 @@ public class gameView {
     }
 
 
-    // AFTER PLAYER IS KNOCKED OUT
-
+    ////// AFTER PLAYER IS KNOCKED OUT, IN ARENA BEFORE FIRST FIGHT //////////
     public void wakeUpInArenaCell_1(){
-        System.out.println("You wake up in a dimly lit room on a cold cement floor. \n" +
+        System.out.println("You wake up in a dimly lit room on a cold floor. Sounds of humming coming from the walls.\n" +
                 "The far side of the room there is a large metal door, light peaking from under. \n" +
                 "The room itself has plain gray walls, much like a prison cell, \n" +
                 "only a lot more spacious. You also realize you have a new set of clothes on.  \n" +
@@ -292,6 +291,55 @@ public class gameView {
                 "Your fight is about to start, get ready... Bastard.\"");
     }
 
+    public void preAnnouncerIntroduction(){
+        System.out.println("""
+                The dim lights in the room begin to grow bright.
+                The consistent humming you’ve been hearing grow with it.
+                The walls around you begin to rumble, much like the bleachers in a
+                gymnasium during a homecoming game. That’s when a booming voice resonates
+                around you, as if you were inside of a speaker.
+                """);
+    }
+
+    public void announcerIntroduction(){
+        System.out.println("""
+                Announcer: “WEEEEEEELLCOMEE~~ TO OUR ANNUAL INTERSPECIES FIGHTING TOURNAMENT!!~
+                If this is your first time in attendance, please do not tamper with the androids
+                you see near you! They are for our protection. This event may have blood, guts, ooze,
+                and weapons flung out of the arena! Tampering with the androids may cause them to
+                become less effective at shielding you from the mess! Before we begin our first match,
+                let me explain what you are about to witness. Members of other planets
+                across the galaxy are brought here to fight one another to discover
+                which species is truly the deadliest. Each of these participants
+                have been taken from their homes, the only way to get back is to?!?!”
+                """);
+        System.out.println("In unison, the humming you hear turn into a muffle roar through the walls:");
+        System.out.println("\"FIGHT FOR YOUR FREEDOM!!!!\"");
+    }
+
+    public void announcerBeginMatch(){
+        System.out.println("""
+                Announcer: “YAAAAHOOOOOOO!!~ THAT’S CORRECT~ Man I love my job.
+                We’re going to kick this tournament off with a special treat. We are going to have our
+                very first HUMAN participant! We’ve heard the stories of their violence and wars.
+                We’ve seen the destruction they’ve caused to their own homeland. Will our participant
+                live up to our expectation? We're about to find out! Now lets get this party started!~"
+                """);
+    }
+
+    public void firstMatchBegin(){
+        System.out.println("""
+                The door in front of you begin to rise, disappearing into the ceiling above you,
+                revealing the arena on the other side of the door. The roars are clear as day now.
+                A massive crowd chanting, screaming, crying out for a bloodbath. You now see your
+                opponent on the other end of the arena, creeping out of it’s own room.
+                It’s about your height, only slightly larger than you. Blue skin, humanoid body,
+                and tentacles for a face. This is not a bad dream for you to wake up from. This is real.
+                You’ve been abducted by an alien and you’re about to face off and fight a species
+                from a place only god knows where --- to the death. If you want to get the hell out of here,
+                you’re going to have to win this tournament.
+                """);
+    }
 
     //////////////////////// SHOP ///////////////////////////////
     /////////////////////////////////////////////////////////////
@@ -401,8 +449,8 @@ public class gameView {
     //////////////////////// COMBAT /////////////////////////////
     /////////////////////////////////////////////////////////////
     public void beginCombatDialogue(String playerName, String enemyName){
-        System.out.println("Alright here we go, we have " + playerName + " up against " + enemyName +"!");
-        System.out.println("Let the match begin!\n");
+        System.out.println("Announcer: \"Alright here we go, we have " + playerName + " up against " + enemyName +"!");
+        System.out.println("Let the match begin!\"\n");
     }
 
     public void displayStats(String playerName, int playerHP, int playerStamina,

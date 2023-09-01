@@ -106,8 +106,8 @@ public class gameView {
                 "shitty one-bedroom apartment secure if not for that lonely metal lock? \n" +
                 "Maybe you can do it tomorrow though. You’re exhausted after your long shift. \n" +
                 "Eight hours of fake smiling and pretend happiness while you serve food at the \n" +
-                "restaurant you work at, and it feels like you’re a proper blue collar man. \n" +
-                "You’d be screwed if you actually did work in manual labor. Definitely not \n" +
+                "restaurant you work at, it feels like you’re a proper blue collar man. \n" +
+                "You’d be screwed if you actually did blue collar work. Definitely not \n" +
                 "lasting eight hours if you’re this tired from just serving food.");
         System.out.println("(Do you tighten the screws?)");
         System.out.println("1. Yes");
@@ -168,7 +168,7 @@ public class gameView {
         System.out.println("Figures. You undress in the bathroom, tossing your clothes \n" +
                 "into the hamper just outside the door. \n" +
                 "The shower starts cold but warms up after a minute or two. Not ideal, \n" +
-                "but at least you get hot water. It’s little things in life that matters.\n" +
+                "but at least you get hot water. It’s the little things in life that matters.\n" +
                 "It’s not all about the fancy cars or the hot dates. At least that’s what people say. \n" +
                 "Except when you’re on the sigma male side of TookTook. Or maybe it's alpha male?");
     }
@@ -201,19 +201,12 @@ public class gameView {
     }
 
     public void playerSaysHelloToKroblag_Ch1(){
-        System.out.println("???: \"Greetings... Odd, normally they do something rash by now. My name is \n" +
-                "Kroblag Maog. I am a slaver from a planet far from here. I like to call myself a \n" +
-                "business man. I am taking you as a slave. It's not as bad as it seems. \n" +
-                "All you need to do is fight in a six round tournament. When you win, I will let you go.\n" +
-                "You will have your own room. I will keep you fed. I will even split part \n" +
-                "of the earnings you win from every match with you, that way you can enjoy yourself \n" +
-                "in the city during your time between matches. If you decide not to fight, \n" +
-                "you'll die. Whether you like it or not, the tournament continues. Trust me, \n" +
-                "your opponent would rather you lay there defenselessly anyways.\"");
+        System.out.println("???: \"Greetings... Odd. Normally they do something rash by now. Either you're \n" +
+                "fearless... or slow.\"");
     }
 
     public void shoveKroblag_Ch1(){
-        System.out.println("With the shower curtain covering half of your body, \n" +
+        System.out.println("With the shower curtain covering most of your body, \n" +
                 "the creature didn’t realize where your hands were. You drive your \n" +
                 "weight forward and push forward with all of your strength. \n" +
                 "Shoving the big monster back, causing it to stumble and fall onto the floor. \n" +
@@ -235,6 +228,68 @@ public class gameView {
         System.out.println("???: \"Alright now... go to sleep.\"");
         System.out.println("Your vision fades to darkness, shadows tunnelling \n" +
                 "inwards until you are sound asleep.");
+    }
+
+
+    // AFTER PLAYER IS KNOCKED OUT
+
+    public void wakeUpInArenaCell_1(){
+        System.out.println("You wake up in a dimly lit room on a cold cement floor. \n" +
+                "The far side of the room there is a large metal door, light peaking from under. \n" +
+                "The room itself has plain gray walls, much like a prison cell, \n" +
+                "only a lot more spacious. You also realize you have a new set of clothes on.  \n" +
+                "A dark gray t-shirt with neon blue trimming and matching pants. \n" +
+                "On your left wrist is a thin metal bracelet. A tiny dot of light \n" +
+                "can be seen in the center of the bracelet, where the face of a watch would be. \n" +
+                "The light blinks several times before a beam is shot out onto the floor in front of you. \n" +
+                "A hologram of what you could only describe as a thin Jabba the Hut appears \n" +
+                "at the end of the beam.\n");
+    }
+
+    public void kroblagIntroducesHimself(){
+        System.out.println("???: \"Perfect, you’re awake. It's about time. \n" +
+                "My name is Kroblag Maog. I have abducted you from your shitty planet to fight in a six-man \n" +
+                "tournament. There will be one match a day. For every victory, \n" +
+                "I will award you with a percentage of the earnings. With your earnings you \n" +
+                "can explore the city, or buy items for yourself to use in the arena. \n" +
+                "If you win the tournament, you will be free to go home. If you choose not to fight, \n" +
+                "you will be slaughtered by your enemy. Either way, I win credits. \n" +
+                "I hope you make the most of this opportunity to make me-…. \n" +
+                "I mean us… make us rich. Your first match is beginning soon, try not to die.\"");
+    }
+
+    public void responseToKroblagIntroduction(){
+        System.out.println("(What do you do?)");
+        System.out.println("1. \"Let me out of here!\"");
+        System.out.println("2. \"I'm not playing your stupid game.\"");
+        System.out.println("3. \"So kill a few people, make some money, go back home? Great.\"");
+        System.out.println("4. \"What the hell are you? Some sort of mutant worm?\"");
+    }
+
+    public void responseToKroblagIntroduction_1(){
+        System.out.println("Kroblag: \"Can’t do that. I’ve already entered you into the tournament.\n" +
+                "In fact, your first match is about to begin. If I pull you out now,\n" +
+                "they’ll take my head as punishment. So you see… My hands are tied.\"\n" +
+                "Kroblag says with a devilish grin.");
+    }
+
+    public void responseToKroblagIntroduction_2(){
+        System.out.println("Kroblag: \"Like I said, if you choose not to fight,\n" +
+                "your opponent is just going to murder you. I make half the coin,\n" +
+                "but I still make profit. If I were you though I’d do a little less complaining\n" +
+                "and more preparing. You only have a few moments before your match begins.\"");
+    }
+
+    public void responseToKroblagIntroduction_3(){
+        System.out.println("Kroblag: \"Exactly. I knew you had it in you. With that mindset,\n" +
+                "you'll do great in there.\"");
+    }
+
+    public void responseToKroblagIntroduction_4(){
+        System.out.println("Kroblag: \"I AM NOT-… Do not compare me to those\n" +
+                "primitive slugs on your world. I am a Maog, last of my kind.\n" +
+                "I don’t know why I’m wasting my breath explaining this to you.\n" +
+                "Your fight is about to start, get ready... Bastard.\"");
     }
 
 

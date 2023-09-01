@@ -1,6 +1,8 @@
 package Model.Items;
 
-public class Item {
+// class is abstract, we never need to create an "Item" object,
+// so it's best practice to just make it abstract.
+public abstract class Item {
     int amount;
     String name;
     int booster;    //booster is the amt of hp/stamina restored

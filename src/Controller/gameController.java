@@ -96,6 +96,8 @@ public class gameController {
         view.chapterOne_1();
         view.lineBreak();
         tightenTheScrewChoice_Ch1();
+        next_input_lineBreak();
+        arena_Ch1();
     }
 
     public void tightenTheScrewChoice_Ch1(){
@@ -141,6 +143,7 @@ public class gameController {
             case "2":
                 view.bigDivider();
                 view.playerSaysHelloToKroblag_Ch1();
+                view.kroblagPlayerToSleep_Ch1();
                 break;
             case "3":
                 view.bigDivider();
@@ -182,6 +185,41 @@ public class gameController {
                 // dont open for stranger
                 view.bigDivider();
                 view.playerDoesNotOpenDoor_Ch1();
+        }
+    }
+
+    public void arena_Ch1(){
+        view.wakeUpInArenaCell_1();
+        next_input_lineBreak();
+        view.kroblagIntroducesHimself();
+        view.lineBreak();
+        view.responseToKroblagIntroduction();
+        view.lineBreak();
+        responseToKroblagIntroduction();
+        next_input_lineBreak();
+    }
+
+    public void responseToKroblagIntroduction(){
+        switch(getUserInputFourOptions()){
+            case "1":
+                // "Let me out of here!"
+                view.bigDivider();
+                view.responseToKroblagIntroduction_1();
+                break;
+            case "2":
+                // "I'm not playing your stupid game"
+                view.bigDivider();
+                view.responseToKroblagIntroduction_2();
+                break;
+            case "3":
+                // "Make money, kill people, go home"
+                view.bigDivider();
+                view.responseToKroblagIntroduction_3();
+                break;
+            case "4":
+                // "What the hell are you? A worm"
+                view.bigDivider();
+                view.responseToKroblagIntroduction_4();
         }
     }
 
